@@ -2,7 +2,22 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+//@import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
+
+//@import 'template/icomoon.css';
+//@import '/template/bootstrap.css';
+//@import '/template/animate.css';
+//@import '/template/magnific-popup.css';
+//@import '/template/flexslider.css';
+//@import '/template/owl.carousel.min.css';
+//@import '/template/owl.theme.default.min.css';
+//@import '/template/bootstrap-datepicker.css';
+//@import '/template/flaticon.css';
+//@import '/template/style.css';
+
+//@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import 'style';

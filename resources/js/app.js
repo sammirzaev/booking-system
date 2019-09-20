@@ -4,7 +4,38 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+// require('./bootstrap');
+
+// require('template/jquery.min.js');
+require('jquery');
+
+// require('template/jquery.easing.1.3.js');
+require('jquery.easing');
+
+// require('template/bootstrap.min.js');
+require('bootstrap');
+
+// require('template/jquery.waypoints.min.js');
+require('waypoints/src/waypoint');
+
+// require('template/jquery.flexslider-min.js');
+require('flexslider');
+
+// require('template/owl.carousel.min.js');
+require('owl.carousel');
+
+// require('template/jquery.magnific-popup.min.js');
+require('magnific-popup');
+
+// require('template/magnific-popup-options.js');
+
+// require('template/bootstrap-datepicker.js');
+require('bootstrap-datepicker');
+
+// require('template/jquery.stellar.min.js');
+require('jquery.stellar/jquery.stellar');
+
+// require('template/main.js');
 
 window.Vue = require('vue');
 
