@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', 'IndexController@index')->name('home');
 Auth::routes();
+Route::get('/', 'IndexController@index')->name('index');
+Route::get('/search-hotel', 'HotelController@search')->name('hotel.search');
 
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
+    Route::get('/dashboard', 'DashboardController@index')->name('index');
+});
+
+Route::middleware(['auth', 'auth.admin'])->prefix('backend')->namespace('Admin')->name('admin.')->group(function () {
+    Route::get('/', 'IndexController@index')->name('index');
+});

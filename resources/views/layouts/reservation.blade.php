@@ -9,7 +9,7 @@
                     <li><a data-toggle="tab" href="#tour"><i class="flaticon-around"></i> Tours</a></li>
                     <li><a data-toggle="tab" href="#activity"><i class="flaticon-island"></i> Activities</a></li>
                     <li><a data-toggle="tab" href="#flight"><i class="flaticon-plane"></i> Flights</a></li>
-                    <li><a data-toggle="tab" href="#train"><i class="flaticon-island"></i> Trains</a></li>
+                    <li><a data-toggle="tab" href="#train"><i class="fa fa-train"></i> Trains</a></li>
                 </ul>
             </div>
             <div class="tab-content">

@@ -59,7 +59,7 @@
     <![endif]-->
 
     <!-- Styles -->
-{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('css')
 
 </head>
@@ -68,7 +68,9 @@
 <div class="colorlib-loader"></div>
 
 <div id="page">
-    @include('layouts.navigation')
+    @section('navigation')
+        @include('layouts.navigation')
+    @show
 
     @yield('slides')
 
