@@ -17,14 +17,33 @@
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
                         @if(auth()->guest())
-                            <li><a href="{{ route('login') }}">Sign In</a></li>
+                            <li class="has-dropdown">
+                                <a href="{{ route('login') }}">
+                                    Login
+                                </a>
+                                <ul class="dropdown">
+                                    <li><a href="{{ route('register') }}">Register </a></li>
+                                </ul>
+                            </li>
                         @else
-                            <li><a href="{{ route('user.index') }}">Dashboard</a></li>
-                            <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">Sign Out</a></li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                            <li class="has-dropdown">
+                                <a href="#">
+                                    Dashboard
+                                </a>
+                                <ul class="dropdown">
+                                    <li><a href="#"><i class="fa fa-heart"></i> Wishlist </a></li>
+                                    <li><a href="#"><i class="fa fa-cart-arrow-down"></i> Cart </a></li>
+                                    <li><a href="#"><i class="fa fa-wpexplorer"></i> Orders </a></li>
+                                    <li><a href="#"><i class="fa fa-bell"></i> Notification </a></li>
+                                    <li><a href="#"><i class="fa fa-cog"></i> Settings </a></li>
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"><i class="fa fa-key"></i> Logout </a></li>
+                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                                </ul>
+                            </li>
                         @endif
                     </ul>
                 </div>

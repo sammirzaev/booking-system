@@ -21,4 +21,5 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
 
 Route::middleware(['auth', 'auth.admin'])->prefix('backend')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'IndexController@index')->name('index');
+    Route::resource('/', 'LocationController')->names('location');
 });
