@@ -43,15 +43,27 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link ml-4">
+                                <a href="{{ route('admin.hotel.index') }}" class="nav-link ml-4">
                                     <i class="nav-icon fas fa-list"></i>
                                     <p>Objects List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link ml-4">
+                                <a href="{{ route('admin.hotel.facility.index') }}" class="nav-link ml-4">
                                     <i class="nav-icon fas fa-sliders-h"></i>
-                                    <p>Facilities</p>
+                                    <p>Facilities List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.hotel.type.index') }}" class="nav-link ml-4">
+                                    <i class="nav-icon fas fa-text-height"></i>
+                                    <p>Type List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.hotel.surround.index') }}" class="nav-link ml-4">
+                                    <i class="nav-icon fas fa-store-alt"></i>
+                                    <p>Surround List</p>
                                 </a>
                             </li>
                         </ul>
@@ -74,7 +86,13 @@
                             <li class="nav-item">
                                 <a href="#" class="nav-link ml-4">
                                     <i class="nav-icon fas fa-sliders-h"></i>
-                                    <p>Facilities</p>
+                                    <p>Facilities List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ml-4">
+                                    <i class="nav-icon fas fa-text-height"></i>
+                                    <p>Type List</p>
                                 </a>
                             </li>
                         </ul>

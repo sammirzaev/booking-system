@@ -28,9 +28,6 @@ class CreateHotelImagesTable extends Migration
      */
     public function down()
     {
-        Schema::create('hotel_images', function (Blueprint $table) {
-            $table->dropForeign(['hotel_id']);
-        });
         Schema::dropIfExists('hotel_images');
     }
 }

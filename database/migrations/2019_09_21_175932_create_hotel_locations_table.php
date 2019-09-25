@@ -13,7 +13,7 @@ class CreateHotelLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotel_locations', function (Blueprint $table) {
+        Schema::create('hotel_location', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('hotel_id')->unsigned()->index();
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
@@ -29,9 +29,6 @@ class CreateHotelLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::create('hotel_locations', function (Blueprint $table) {
-            $table->dropForeign(['hotel_id', 'location_id']);
-        });
-        Schema::dropIfExists('hotel_locations');
+        Schema::dropIfExists('hotel_location');
     }
 }

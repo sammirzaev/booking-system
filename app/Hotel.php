@@ -32,6 +32,21 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $locations_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelSurround[] $surrounds
  * @property-read int|null $surrounds_count
+ * @property string|null $latitude
+ * @property string|null $longitude
+ * @property string|null $check_in
+ * @property string|null $check_out
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelType[] $types
+ * @property-read int|null $types_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel sortable($defaultParameters = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereCheckIn($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereCheckOut($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereLongitude($value)
+ * @property int|null $status
+ * @property int $sort
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereSort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereStatus($value)
  */
 class Hotel extends Model
 {
@@ -73,14 +88,6 @@ class Hotel extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function surrounds()
-    {
-        return $this->hasMany(HotelSurround::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function languages()
     {
         return $this->hasMany(HotelLanguage::class);
@@ -105,8 +112,24 @@ class Hotel extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
+    public function types()
+    {
+        return $this->belongsToMany(HotelType::class, 'hotel_type');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function surrounds()
+    {
+        return $this->belongsToMany(HotelSurround::class, 'hotel_surround');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function locations()
     {
-        return $this->belongsToMany(Location::class, 'hotel_locations');
+        return $this->belongsToMany(Location::class, 'hotel_location');
     }
 }

@@ -10,7 +10,7 @@
                         <select class="form-control" name="where" id="where">
                             <option value="" class="option-grey">Everywhere</option>
                             @if(isset($locations) && $locations->isNotEmpty())
-                                @include('layouts.reservation.location-child', ['items' => $locations->where('parent_id', null), 'parent' => ''])
+                                @include('layouts.reservation.location-child', ['items' => $locations->where('parent_id', null)->sortBy('sort'), 'parent' => ''])
                             @endif
                         </select>
                     </div>

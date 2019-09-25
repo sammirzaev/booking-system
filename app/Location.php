@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\LocationLanguage $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\LocationLanguage[] $languages
  * @property-read int|null $languages_count
+ * @property int $sort
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Location whereSort($value)
  */
 class Location extends Model
 {
@@ -79,7 +81,7 @@ class Location extends Model
      */
     public function hotels()
     {
-        return $this->belongsToMany(Hotel::class, 'hotel_locations');
+        return $this->belongsToMany(Hotel::class, 'hotel_location');
     }
 
     /**
@@ -88,7 +90,7 @@ class Location extends Model
      * @param  string  $value
      * @return void
      */
-    public function setFirstNameAttribute($value)
+    public function setCodeAttribute($value)
     {
         $this->attributes['code'] = strtoupper($value);
     }

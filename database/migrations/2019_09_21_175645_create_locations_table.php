@@ -17,8 +17,9 @@ class CreateLocationsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('parent_id')->nullable();
             $table->string('code', 3)->unique();
-            $table->multiPolygon('latitude')->nullable();
-            $table->multiPolygon('longitude')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->integer('sort')->default(1)->unsigned();
         });
     }
 

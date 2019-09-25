@@ -27,5 +27,11 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
  */
 Route::middleware(['auth', 'auth.admin'])->prefix('backend')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'IndexController@index')->name('index');
+
     Route::resource('/location', 'LocationController')->names('location');
+
+    Route::resource('/hotel', 'HotelController')->names('hotel');
+    Route::resource('/hotel-type', 'HotelTypeController')->names('hotel.type');
+    Route::resource('/hotel-facility', 'HotelFacilityController')->names('hotel.facility');
+    Route::resource('/hotel-surround', 'HotelSurroundController')->names('hotel.surround');
 });

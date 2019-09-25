@@ -21,6 +21,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\HotelSurroundLanguage $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelSurroundLanguage[] $languages
  * @property-read int|null $languages_count
+ * @property string|null $icon
+ * @property int $sort
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Hotel[] $hotel
+ * @property-read int|null $hotel_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround whereSort($value)
  */
 class HotelSurround extends Model
 {
@@ -55,5 +61,13 @@ class HotelSurround extends Model
     public function language()
     {
         return $this->hasOne(HotelSurroundLanguage::class)->where('lang', App::getLocale());
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function hotel()
+    {
+        return $this->belongsToMany(Hotel::class, 'hotel_surround');
     }
 }

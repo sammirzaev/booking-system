@@ -42,7 +42,7 @@ class LocationController extends AdminController
      */
     public function create()
     {
-        return $this->view->with('locations', $this->location->all()->load('languages'));
+        return $this->view->with('locations', $this->location->all()->load('language'));
     }
 
     /**
@@ -58,6 +58,7 @@ class LocationController extends AdminController
         $this->location->parent_id = $request->input('parent');
         $this->location->latitude = $request->input('latitude');
         $this->location->longitude = $request->input('longitude');
+        $this->location->sort = $request->input('sort');
 
         DB::beginTransaction();
         if ($this->location->save()) {
@@ -101,7 +102,7 @@ class LocationController extends AdminController
     {
         return $this->view
             ->with('location', $location)
-            ->with('locations', $this->location->all()->load('languages'));
+            ->with('locations', $this->location->all()->load('language'));
     }
 
     /**
@@ -118,10 +119,10 @@ class LocationController extends AdminController
         $location->parent_id = $request->input('parent');
         $location->latitude = $request->input('latitude');
         $location->longitude = $request->input('longitude');
+        $location->sort = $request->input('sort');
 
         DB::beginTransaction();
         if ($location->update()) {
-            $languages = [];
             foreach (config('settings.locales') as $lang) {
                 $location->languages()->where('lang', $lang)
                     ->update([
@@ -156,7 +157,11 @@ class LocationController extends AdminController
      * @param Location $location
      * @return bool
      */
-    protected function useCheck($location){
+    protected function useCheck($location)
+    {
+        if(current($this->location->where('parent_id', $location->id)->get())){
+            return false;
+        }
         return true;
     }
 }

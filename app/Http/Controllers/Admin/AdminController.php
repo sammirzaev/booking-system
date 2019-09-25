@@ -47,7 +47,7 @@ class AdminController extends Controller
         $search = ['Controller', '@'];
         $replace = ['', '.'];
 
-        return view('admin.' . lcfirst(str_replace($search, $replace, $controllerAction)));
+        return view('admin.' . strtolower(str_replace($search, $replace, $controllerAction)));
     }
 
     /**

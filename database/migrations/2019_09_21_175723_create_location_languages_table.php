@@ -29,9 +29,6 @@ class CreateLocationLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::create('location_languages', function (Blueprint $table) {
-            $table->dropForeign(['location_id']);
-        });
         Schema::dropIfExists('location_languages');
     }
 }

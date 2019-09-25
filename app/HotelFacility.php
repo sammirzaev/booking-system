@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\HotelFacility $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelFacility[] $languages
  * @property-read int|null $languages_count
+ * @property int $sort
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelFacility whereSort($value)
  */
 class HotelFacility extends Model
 {
@@ -48,7 +50,7 @@ class HotelFacility extends Model
      */
     public function languages()
     {
-        return $this->hasMany(HotelFacility::class);
+        return $this->hasMany(HotelFacilityLanguage::class);
     }
 
     /**
@@ -56,7 +58,7 @@ class HotelFacility extends Model
      */
     public function language()
     {
-        return $this->hasOne(HotelFacility::class)->where('lang', App::getLocale());
+        return $this->hasOne(HotelFacilityLanguage::class)->where('lang', App::getLocale());
     }
 
     /**

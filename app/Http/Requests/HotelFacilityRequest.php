@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LocationRequest extends FormRequest
+class HotelFacilityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,19 +17,6 @@ class LocationRequest extends FormRequest
     }
 
     /**
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function getValidatorInstance()
-    {
-        $validator = parent::getValidatorInstance();
-
-        $validator->sometimes('code', 'unique:locations', function ($input) {
-            return !($this->route()->getActionMethod() == 'update') ?? $input->code;
-        });
-        return $validator;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -37,7 +24,7 @@ class LocationRequest extends FormRequest
     public function rules()
     {
         return [
-            'code'          => 'required|string|max:3|min:2',
+            'icon'          => 'nullable|string|max:50',
             'parent_id'     => 'integer',
             'sort'          => 'integer|min:1',
             'title.*'       => 'required|max:255'

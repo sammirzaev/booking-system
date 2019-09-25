@@ -29,6 +29,9 @@
                             aria-label="CSS grade: activate to sort column ascending">Geolocation
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                            aria-label="CSS grade: activate to sort column ascending">Sort
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                             aria-label="CSS grade: activate to sort column ascending">Action
                         </th>
                     </tr>
@@ -50,6 +53,7 @@
                                 <td>Latitude: {{ $location->latitude }}
                                     <br>Longitude: {{ $location->longitude }}
                                 </td>
+                                <td>{{ $location->sort }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a class="btn btn-info mr-2" href="{{ route('admin.location.show', $location) }}" title="Show"><i class="fa fa-eye"></i></a>
@@ -75,12 +79,13 @@
                         <th rowspan="1" colspan="1">Parent</th>
                         <th rowspan="1" colspan="1">Title</th>
                         <th rowspan="1" colspan="1">Geolocation</th>
+                        <th rowspan="1" colspan="1">Sort</th>
                         <th rowspan="1" colspan="1">Action</th>
                     </tr>
                     </tfoot>
                     @else
                         <tr>
-                            <th rowspan="1" colspan="6">Location list is empty</th>
+                            <th rowspan="1" colspan="7">Location list is empty</th>
                         </tr>
                         </tfoot>
 

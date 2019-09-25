@@ -17,7 +17,6 @@ class CreateHotelSurroundLanguagesTable extends Migration
             $table->bigIncrements('id');
             $table->string('lang', 5);
             $table->string('title', 50);
-            $table->string('name', 50);
             $table->bigInteger('hotel_surround_id')->unsigned()->index();
             $table->foreign('hotel_surround_id')->references('id')->on('hotel_surrounds')->onDelete('cascade');
         });
@@ -30,9 +29,6 @@ class CreateHotelSurroundLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::create('hotel_surround_languages', function (Blueprint $table) {
-            $table->dropForeign(['hotel_surround_id']);
-        });
         Schema::dropIfExists('hotel_surround_languages');
     }
 }

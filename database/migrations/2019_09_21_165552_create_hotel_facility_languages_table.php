@@ -29,9 +29,6 @@ class CreateHotelFacilityLanguagesTable extends Migration
      */
     public function down()
     {
-        Schema::create('hotel_facility_languages', function (Blueprint $table) {
-            $table->dropForeign(['hotel_facility_id']);
-        });
         Schema::dropIfExists('hotel_facility_languages');
     }
 }

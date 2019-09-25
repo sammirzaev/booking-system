@@ -15,9 +15,8 @@ class CreateHotelSurroundsTable extends Migration
     {
         Schema::create('hotel_surrounds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->decimal('distance',4,2)->nullable();
-            $table->bigInteger('hotel_id')->unsigned()->index();
-            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
+            $table->string('icon', 50)->nullable();
+            $table->integer('sort')->default(1)->unsigned();
         });
     }
 
@@ -28,9 +27,6 @@ class CreateHotelSurroundsTable extends Migration
      */
     public function down()
     {
-        Schema::create('hotel_surrounds', function (Blueprint $table) {
-            $table->dropForeign(['hotel_id']);
-        });
         Schema::dropIfExists('hotel_surrounds');
     }
 }
