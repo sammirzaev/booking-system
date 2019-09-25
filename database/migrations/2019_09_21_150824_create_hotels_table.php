@@ -18,6 +18,8 @@ class CreateHotelsTable extends Migration
             $table->tinyInteger('star')->unique()->nullable();
             $table->decimal('price_from',10,2);
             $table->decimal('price_to',10,2);
+            $table->multiPolygon('latitude')->nullable();
+            $table->multiPolygon('longitude')->nullable();
         });
     }
 

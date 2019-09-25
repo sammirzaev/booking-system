@@ -17,3 +17,8 @@
 @import '~admin-lte/plugins/daterangepicker/daterangepicker.css';
 @import '~admin-lte/plugins/summernote/summernote-bs4.css';
 
+.required:after{
+  content:" *";
+  color:red;
+}
+

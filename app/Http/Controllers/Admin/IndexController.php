@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 class IndexController extends AdminController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
     /**
      * Show the application dashboard.
      *
@@ -11,6 +15,6 @@ class IndexController extends AdminController
      */
     public function index()
     {
-        return view('admin.index.index');
+        return $this->view;
     }
 }

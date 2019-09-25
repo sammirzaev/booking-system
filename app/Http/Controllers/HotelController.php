@@ -3,10 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use App\Location;
 use Illuminate\Http\Request;
 
-class HotelController extends Controller
+class HotelController extends FrontendController
 {
+    /**
+     * @var Location
+     */
+    protected $location;
+
+    /**
+     * LocationController constructor.
+     * @param Location $location
+     */
+    public function __construct(Location $location)
+    {
+        $this->location = $location;
+    }
+
+    public function search()
+    {
+        return view('hotel.search')
+            ->with('locations', $this->location->all()->load('language'));
+    }
+
     /**
      * Display a listing of the resource.
      *

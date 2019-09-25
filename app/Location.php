@@ -62,6 +62,17 @@ class Location extends Model
     {
         return $this->hasOne(LocationLanguage::class)->where('lang', App::getLocale());
     }
+    /**
+     * @param false $language
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+//    public function language($language = false)
+//    {
+//        if (!$language){
+//            $language = App::getLocale();
+//        }
+//        return $this->hasOne(LocationLanguage::class)->where('lang', $language);
+//    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -69,5 +80,16 @@ class Location extends Model
     public function hotels()
     {
         return $this->belongsToMany(Hotel::class, 'hotel_locations');
+    }
+
+    /**
+     * Set the location code.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setFirstNameAttribute($value)
+    {
+        $this->attributes['code'] = strtoupper($value);
     }
 }

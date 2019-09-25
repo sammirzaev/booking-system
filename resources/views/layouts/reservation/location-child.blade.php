@@ -1,0 +1,9 @@
+@foreach($items as $item)
+    <option class="fa fa-map-marker option-grey" value="{{ $item->code }}">{{ $parent . $item->language->title }}</option>
+    @if($locations->where('parent_id', $item->id)->isNotEmpty())
+        @include('layouts.reservation.location-child', [
+           'items' => $locations->where('parent_id', $item->id),
+           'parent' => $item->parent_id ? $parent . $item->language->title . ' > ' : $item->language->title . ' > '
+       ])
+    @endif
+@endforeach

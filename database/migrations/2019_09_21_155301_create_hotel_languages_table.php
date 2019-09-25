@@ -18,8 +18,6 @@ class CreateHotelLanguagesTable extends Migration
             $table->string('lang', 5);
             $table->string('title', 100);
             $table->string('address', 255);
-            $table->decimal('latitude', 12,4)->nullable();
-            $table->decimal('longitude', 12,4)->nullable();
             $table->text('description');
             $table->bigInteger('hotel_id')->unsigned()->index();
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');

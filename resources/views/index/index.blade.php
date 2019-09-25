@@ -5,7 +5,7 @@
 @endsection
 
 @section('reservation')
-    @include('layouts.reservation')
+    @include('layouts.reservation.widget')
 @endsection
 
 @section('content')

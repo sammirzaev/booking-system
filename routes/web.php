@@ -15,11 +15,17 @@ Auth::routes();
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('/search-hotel', 'HotelController@search')->name('hotel.search');
 
+/**
+ * User routes
+ */
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('index');
 });
 
+/**
+ * Admin part routes
+ */
 Route::middleware(['auth', 'auth.admin'])->prefix('backend')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'IndexController@index')->name('index');
-    Route::resource('/', 'LocationController')->names('location');
+    Route::resource('/location', 'LocationController')->names('location');
 });

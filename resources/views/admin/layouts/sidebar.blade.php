@@ -24,7 +24,7 @@
                 </a>
             </li>
 
-            <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview ">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-cog"></i>
                     <p>
@@ -80,7 +80,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link ml-2">
+                        <a href="{{ route('admin.location.index') }}" class="nav-link ml-2">
                             <i class="nav-icon fas fa-globe-asia"></i>
                             <p>Location</p>
                         </a>
