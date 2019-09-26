@@ -33,6 +33,7 @@ Route::middleware(['auth', 'auth.admin'])->prefix('backend')->namespace('Admin')
 
     Route::resource('/hotel', 'HotelController')->names('hotel');
     Route::resource('/hotel-type', 'HotelTypeController')->names('hotel.type');
+    Route::resource('/hotel-bonus', 'HotelBonusController')->names('hotel.bonus');
     Route::resource('/hotel-facility', 'HotelFacilityController')->names('hotel.facility');
     Route::resource('/hotel-surround', 'HotelSurroundController')->names('hotel.surround');
 });

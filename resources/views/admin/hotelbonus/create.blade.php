@@ -3,6 +3,5 @@
 @php(array_push($breadcrumbs, ['item' => 'Create']))
 
 @section('content')
-    @include('admin.hotel.form.index')
+    @include('admin.hotelbonus.form')
 @endsection
-

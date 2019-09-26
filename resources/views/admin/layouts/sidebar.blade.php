@@ -66,6 +66,12 @@
                                     <p>Surround List</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.hotel.bonus.index') }}" class="nav-link ml-4">
+                                    <i class="nav-icon fas fa-archive"></i>
+                                    <p>Bonus List</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -93,6 +99,12 @@
                                 <a href="#" class="nav-link ml-4">
                                     <i class="nav-icon fas fa-text-height"></i>
                                     <p>Type List</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link ml-4">
+                                    <i class="nav-icon fas fa-archive"></i>
+                                    <p>Bonus List</p>
                                 </a>
                             </li>
                         </ul>

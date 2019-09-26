@@ -22,6 +22,8 @@ class CreateHotelsTable extends Migration
             $table->time('check_out')->nullable();
             $table->integer('status')->unsigned()->nullable();
             $table->integer('sort')->default(1)->unsigned();
+            $table->integer('order_day')->nullable()->unsigned();
+            $table->integer('cancel_day')->nullable()->unsigned();
         });
     }
 

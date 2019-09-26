@@ -47,6 +47,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $sort
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereSort($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereStatus($value)
+ * @property int|null $order_day
+ * @property int|null $cancel_day
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelBonus[] $bonuses
+ * @property-read int|null $bonuses_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereCancelDay($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereOrderDay($value)
  */
 class Hotel extends Model
 {
@@ -123,6 +129,14 @@ class Hotel extends Model
     public function surrounds()
     {
         return $this->belongsToMany(HotelSurround::class, 'hotel_surround');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function bonuses()
+    {
+        return $this->belongsToMany(HotelBonus::class, 'hotel_bonus');
     }
 
     /**

@@ -14,7 +14,8 @@
                                 <label class="required" for="title[{{ $locale }}]">Title {{ strtoupper($locale) }}</label>
                                 <input type="text" name="title[{{ $locale }}]" id="title[{{ $locale }}]" class="form-control @error("title.$locale") is-invalid @enderror"
                                        placeholder="Enter title {{ strtoupper($locale) }}"
-                                       value="{{ (isset($hotelSurround) && $hotelSurround->languages->where('code', $locale)) ? current(current($hotelSurround->languages->where('lang', $locale)))->title : old("title.$locale") }}"
+                                       value="{{ (isset($hotelSurround) && isset(current(current($hotelSurround->languages->where('lang', $locale)))->title)) ?
+                                       current(current($hotelSurround->languages->where('lang', $locale)))->title : old("title.$locale") }}"
                                 required>
                                 @error("title.$locale")
                                 <p class="text-danger">{{ $message }}</p>
@@ -63,8 +64,8 @@
     <div class="row">
         <div class="col-12">
             <div class="btn-group float-right">
-                <button surround="submit" class="btn btn-success">{{ (isset($hotelSurround->id)) ? 'Update' : 'Save' }}</button>
-                <button surround="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                <button type="submit" class="btn btn-success">{{ (isset($hotelSurround->id)) ? 'Update' : 'Save' }}</button>
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>

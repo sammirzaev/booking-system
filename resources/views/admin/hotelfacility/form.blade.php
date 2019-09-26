@@ -62,7 +62,8 @@
                                 <label class="required" for="title[{{ $locale }}]">Title {{ strtoupper($locale) }}</label>
                                 <input type="text" name="title[{{ $locale }}]" id="title[{{ $locale }}]" class="form-control @error("title.$locale") is-invalid @enderror"
                                        placeholder="Enter title {{ strtoupper($locale) }}"
-                                       value="{{ (isset($hotelFacility) && $hotelFacility->languages->where('code', $locale)) ? current(current($hotelFacility->languages->where('lang', $locale)))->title : old("title.$locale") }}"
+                                       value="{{ (isset($hotelFacility) && isset(current(current($hotelFacility->languages->where('lang', $locale)))->title)) ?
+                                       current(current($hotelFacility->languages->where('lang', $locale)))->title : old("title.$locale") }}"
                                 required>
                                 @error("title.$locale")
                                 <p class="text-danger">{{ $message }}</p>
