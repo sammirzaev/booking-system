@@ -14,11 +14,13 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Styles -->
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
+
+    @stack('css')
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper" id="app">
 
     <!-- Navbar -->
         @include('admin.layouts.navigation')
@@ -98,5 +100,8 @@
 
 <!-- Scripts -->
 <script src="{{ asset('admin/js/app.js') }}"></script>
+
+@stack('js')
+
 </body>
 </html>

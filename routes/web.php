@@ -29,6 +29,7 @@ Route::middleware(['auth', 'auth.admin'])->prefix('backend')->namespace('Admin')
     Route::get('/', 'IndexController@index')->name('index');
 
     Route::resource('/location', 'LocationController')->names('location');
+    Route::resource('/media', 'MediaController')->names('media');
 
     Route::resource('/hotel', 'HotelController')->names('hotel');
     Route::resource('/hotel-type', 'HotelTypeController')->names('hotel.type');

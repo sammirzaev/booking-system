@@ -16,10 +16,8 @@ class CreateHotelsTable extends Migration
         Schema::create('hotels', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->tinyInteger('star')->unique()->nullable();
-            $table->decimal('price_from',10,2);
+            $table->decimal('price_from',10,2)->nullable();
             $table->decimal('price_to',10,2);
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
             $table->time('check_in')->nullable();
             $table->time('check_out')->nullable();
             $table->integer('status')->unsigned()->nullable();

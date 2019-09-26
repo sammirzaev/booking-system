@@ -50,8 +50,8 @@
                                         {{ strtoupper($language->lang) }}: {{ $language->title }} <br/>
                                     @endforeach
                                 </td>
-                                <td>Latitude: {{ $location->latitude }}
-                                    <br>Longitude: {{ $location->longitude }}
+                                <td>Latitude: {{ $location->latitude ? $location->latitude : '' }}
+                                    <br>Longitude: {{ $location->longitude ? $location->longitude : '' }}
                                 </td>
                                 <td>{{ $location->sort }}</td>
                                 <td>
