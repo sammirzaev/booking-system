@@ -49,7 +49,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="custom-content-below-bonus-tab" data-toggle="pill" href="#custom-content-below-bonus"
                                    role="tab" aria-controls="custom-content-below-bonus" aria-selected="true">
-                                    Surround
+                                    Bonus
                                 </a>
                             </li>
                         </ul>

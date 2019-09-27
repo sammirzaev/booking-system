@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Hotel;
+use App\Location;
 use App\HotelType;
+use App\HotelBonus;
 use App\HotelFacility;
 use App\HotelSurround;
 use App\Http\Requests\HotelRequest;
-use App\Location;
 
 class HotelController extends AdminController
 {
@@ -32,6 +33,11 @@ class HotelController extends AdminController
     private $hotelSurround;
 
     /**
+     * @var HotelBonus
+     */
+    private $hotelBonus;
+
+    /**
      * @var Location
      */
     private $location;
@@ -42,13 +48,15 @@ class HotelController extends AdminController
      * @param HotelType $hotelType
      * @param HotelFacility $hotelFacility
      * @param HotelSurround $hotelSurround
+     * @param HotelBonus $hotelBonus
      * @param Location $location
      */
-    public function __construct(Hotel $hotel, HotelType $hotelType, HotelFacility $hotelFacility, HotelSurround $hotelSurround, Location $location)
+    public function __construct(Hotel $hotel, HotelType $hotelType, HotelFacility $hotelFacility, HotelSurround $hotelSurround, HotelBonus $hotelBonus, Location $location)
     {
         $this->hotel = $hotel;
         $this->location = $location;
         $this->hotelType = $hotelType;
+        $this->hotelBonus = $hotelBonus;
         $this->hotelFacility = $hotelFacility;
         $this->hotelSurround = $hotelSurround;
 
@@ -75,6 +83,7 @@ class HotelController extends AdminController
     public function create()
     {
         return $this->view
+            ->with('hotelBonuses', $this->hotelBonus->all()->load('language'))
             ->with('locations', $this->location->all()->load('language'))
             ->with('hotelTypes', $this->hotelType->all()->load('language'))
             ->with('hotelFacilities', $this->hotelFacility->all()->load('language'))
