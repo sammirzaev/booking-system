@@ -8,6 +8,7 @@ use App\HotelType;
 use App\HotelBonus;
 use App\HotelFacility;
 use App\HotelSurround;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HotelRequest;
 
 class HotelController extends AdminController
@@ -83,9 +84,9 @@ class HotelController extends AdminController
     public function create()
     {
         return $this->view
-            ->with('hotelBonuses', $this->hotelBonus->all()->load('language'))
             ->with('locations', $this->location->all()->load('language'))
             ->with('hotelTypes', $this->hotelType->all()->load('language'))
+            ->with('hotelBonuses', $this->hotelBonus->all()->load('language'))
             ->with('hotelFacilities', $this->hotelFacility->all()->load('language'))
             ->with('hotelSurrounds', $this->hotelSurround->all()->load('language'));
     }
@@ -93,12 +94,103 @@ class HotelController extends AdminController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  HotelRequest $request
-     * @return \Illuminate\Http\Response
+     * @param HotelRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function store(HotelRequest $request)
     {
-        //
+        $this->hotel->star          = $request->input('mainStar');
+        $this->hotel->price_from    = $request->input('mainPriceFrom');
+        $this->hotel->price_to      = $request->input('mainPriceTo');
+        $this->hotel->check_in      = $request->input('mainCheckin');
+        $this->hotel->check_out     = $request->input('mainCheckout');
+        $this->hotel->status        = $request->input('mainStatus');
+        $this->hotel->sort          = $request->input('mainSort');
+        $this->hotel->order_day     = $request->input('mainBookingDay');
+        $this->hotel->cancel_day    = $request->input('mainCancelDay');
+        $this->hotel->latitude      = $request->input('locationLatitude');
+        $this->hotel->longitude     = $request->input('locationLongitude');
+
+        DB::beginTransaction();
+        if ($this->hotel->save()) {
+            $languages = [];
+            foreach (config('settings.locales') as $lang) {
+                $languages[] = [
+                    'lang' => $lang,
+                    'title' => $request->input("mainTitle.$lang"),
+                    'address' => $request->input("mainAddress.$lang"),
+                    'description' => $request->input("mainDescription.$lang"),
+                    'hotel_id' => $this->hotel->id
+                ];
+            }
+
+            if ($this->hotel->languages()->createMany($languages)){
+
+                if ($request->hasFile("mediaUploaded")){
+                    $mediaUploaded = [];
+                    foreach ($request->file("mediaUploaded") as $media){
+                        $upload = $media->store('hotels', 'public');
+
+                        if($upload){
+                            $mediaUploaded[] = [
+                                'name' => str_replace('hotels/', '', $upload),
+                                'type' => $media->getMimeType(),
+                                'hotel_id' => $this->hotel->id
+                            ];
+                        }
+                        if($media->isFile()){
+                            unlink($media->getRealPath());
+                        }
+                    }
+                    $this->hotel->images()->createMany($mediaUploaded);
+                }
+                if ($request->input("locationId")){
+                    $this->hotel->locations()->sync($request->input("locationId"));
+                }
+                if ($request->input("hotelTypes")){
+                    $hotelTypes = [];
+                    foreach ($request->input("hotelTypes") as $key => $item){
+                        array_push($hotelTypes, $key);
+                    }
+                    $this->hotel->types()->sync($hotelTypes);
+                }
+                if ($request->input("hotelFacilities")){
+                    $hotelFacilities = [];
+                    foreach ($request->input("hotelFacilities") as $key => $item){
+                        array_push($hotelFacilities, $key);
+                    }
+                    $this->hotel->facilities()->sync($hotelFacilities);
+                }
+                if ($request->input("hotelSurroundsName")){
+                    $hotelSurrounds = [];
+                    foreach ($request->input("hotelSurroundsName") as $key => $hotelSurroundsName){
+                        if($hotelSurroundsName){
+                            $hotelSurrounds[$key] = [
+                                'name'      => $hotelSurroundsName,
+                                'distance'  => $request->input("hotelSurroundsDistance.$key"),
+                                'latitude'  => $request->input("hotelSurroundsLatitude.$key"),
+                                'longitude' => $request->input("hotelSurroundsLongitude.$key")
+                            ];
+                        }
+                    }
+                    if(current($hotelSurrounds)){
+                        $this->hotel->surrounds()->sync($hotelSurrounds);
+                    }
+                }
+                if ($request->input("hotelBonuses")){
+                    $hotelBonuses = [];
+                    foreach ($request->input("hotelBonuses") as $key => $item){
+                        array_push($hotelBonuses, $key);
+                    }
+                    $this->hotel->bonuses()->sync($hotelBonuses);
+                }
+                DB::commit();
+                return redirect()->route('admin.hotel.index')->with(['success' => 'Hotel bonus saved successfully']);
+            }
+        }
+        DB::rollBack();
+        return back()->with('error', 'Error');
     }
 
     /**
@@ -109,12 +201,7 @@ class HotelController extends AdminController
      */
     public function show(Hotel $hotel)
     {
-        return $this->view
-            ->with('hotel', $hotel)
-            ->with('locations', $this->location->all()->load('language'))
-            ->with('hotelTypes', $this->hotelType->all()->load('language'))
-            ->with('hotelFacilities', $this->hotelFacility->all()->load('language'))
-            ->with('hotelSurrounds', $this->hotelSurround->all()->load('language'));
+        //
     }
 
     /**
@@ -129,6 +216,7 @@ class HotelController extends AdminController
             ->with('hotel', $hotel)
             ->with('locations', $this->location->all()->load('language'))
             ->with('hotelTypes', $this->hotelType->all()->load('language'))
+            ->with('hotelBonuses', $this->hotelBonus->all()->load('language'))
             ->with('hotelFacilities', $this->hotelFacility->all()->load('language'))
             ->with('hotelSurrounds', $this->hotelSurround->all()->load('language'));
     }

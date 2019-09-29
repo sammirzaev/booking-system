@@ -15,8 +15,6 @@ class CreateHotelLocationsTable extends Migration
     {
         Schema::create('hotel_location', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
             $table->bigInteger('hotel_id')->unsigned()->index();
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
             $table->bigInteger('location_id')->unsigned()->index();

@@ -12,15 +12,17 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int|null $star
  * @property float $price_from
- * @property float $price_to
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel wherePriceFrom($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel wherePriceTo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereStar($value)
- * @mixin \Eloquent
+ * @property float|null $price_to
+ * @property string|null $check_in
+ * @property string|null $check_out
+ * @property int|null $status
+ * @property int $sort
+ * @property int|null $order_day
+ * @property int|null $cancel_day
+ * @property string|null $latitude
+ * @property string|null $longitude
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelBonus[] $bonuses
+ * @property-read int|null $bonuses_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelFacility[] $facilities
  * @property-read int|null $facilities_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelImage[] $images
@@ -32,27 +34,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read int|null $locations_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelSurround[] $surrounds
  * @property-read int|null $surrounds_count
- * @property string|null $latitude
- * @property string|null $longitude
- * @property string|null $check_in
- * @property string|null $check_out
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelType[] $types
  * @property-read int|null $types_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel sortable($defaultParameters = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereCancelDay($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereCheckIn($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereCheckOut($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereLatitude($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereLongitude($value)
- * @property int|null $status
- * @property int $sort
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereSort($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereStatus($value)
- * @property int|null $order_day
- * @property int|null $cancel_day
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelBonus[] $bonuses
- * @property-read int|null $bonuses_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereCancelDay($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereOrderDay($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel wherePriceFrom($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel wherePriceTo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereSort($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereStar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereStatus($value)
+ * @mixin \Eloquent
  */
 class Hotel extends Model
 {
@@ -128,7 +128,8 @@ class Hotel extends Model
      */
     public function surrounds()
     {
-        return $this->belongsToMany(HotelSurround::class, 'hotel_surround');
+        return $this->belongsToMany(HotelSurround::class, 'hotel_surround')
+            ->withPivot('name', 'distance', 'latitude', 'longitude');
     }
 
     /**

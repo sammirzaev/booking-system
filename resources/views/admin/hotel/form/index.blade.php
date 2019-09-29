@@ -96,32 +96,63 @@
     <div class="row">
         <div class="col-12">
             <div class="btn-group float-right">
-                <button type="submit" class="btn btn-success">{{ (isset($location->id)) ? 'Update' : 'Save' }}</button>
+                <button type="submit" class="btn btn-success">{{ (isset($hotel->id)) ? 'Update' : 'Save' }}</button>
                 <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu" role="menu">
-                    <a class="dropdown-item" href="#">{{ (isset($location->id)) ? 'Update' : 'Save' }} & edit</a>
-                    <a class="dropdown-item" href="#">{{ (isset($location->id)) ? 'Update' : 'Save' }} & new</a>
+                    <a class="dropdown-item" href="#">{{ (isset($hotel->id)) ? 'Update' : 'Save' }} & edit</a>
+                    <a class="dropdown-item" href="#">{{ (isset($hotel->id)) ? 'Update' : 'Save' }} & new</a>
                 </div>
             </div>
         </div>
     </div>
 </form>
+@php($locationIdSelected = [])
+@if(isset($hotel->locations))
+    @foreach($hotel->locations as $loc)
+        @php(array_push($locationIdSelected, $loc->id))
+    @endforeach
+@endif
+@if(old("locationId"))
+    @foreach(old("locationId") as $loc)
+        @php(array_push($locationIdSelected, strval($loc)))
+    @endforeach
+@endif
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('admin/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/select2-bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/css/ekko-lightbox.css') }}">
 @endpush
 @push('js')
     <script type="text/javascript" src="{{ asset('admin/js/select2.full.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admin/js/ekko-lightbox.min.js') }}"></script>
     <script type="text/javascript">
+        var arraySelected = {!! json_encode($locationIdSelected) !!};
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2({
                 theme: 'bootstrap4'
             })
+            $('#locationId').select2('val', [arraySelected]);
         });
+    </script>
+    <script>
+        $(function () {
+            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                event.preventDefault();
+                $(this).ekkoLightbox({
+                    alwaysShowClose: true
+                });
+            });
+
+            $('.filter-container').filterizr({gutterPixels: 3});
+            $('.btn[data-filter]').on('click', function() {
+                $('.btn[data-filter]').removeClass('active');
+                $(this).addClass('active');
+            });
+        })
     </script>
 @endpush

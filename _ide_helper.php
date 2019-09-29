@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.0.3 on 2019-09-21 20:47:30.
+ * Generated for Laravel 6.0.3 on 2019-09-29 07:14:36.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15413,6 +15413,369 @@ namespace Facade\Ignition\Facades {
  
 }
 
+namespace Prologue\Alerts\Facades { 
+
+    /**
+     * 
+     *
+     * @method static \Prologue\Alerts\AlertsMessageBag success(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag error(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag warning(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag info(string $text)
+     */ 
+    class Alert {
+        
+        /**
+         * Store the messages in the current session.
+         *
+         * @return \Prologue\Alerts\AlertsMessageBag 
+         * @static 
+         */ 
+        public static function flash()
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->flash();
+        }
+        
+        /**
+         * Deletes all messages.
+         *
+         * @param bool $withSession
+         * @return \Prologue\Alerts\AlertsMessageBag 
+         * @static 
+         */ 
+        public static function flush($withSession = true)
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->flush($withSession);
+        }
+        
+        /**
+         * Returns the alert levels from the config.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getLevels()
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getLevels();
+        }
+        
+        /**
+         * Returns the Illuminate Session Store.
+         *
+         * @return \Illuminate\Session\Store 
+         * @static 
+         */ 
+        public static function getSession()
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getSession();
+        }
+        
+        /**
+         * Returns the Illuminate Config Repository.
+         *
+         * @return \Illuminate\Config\Repository 
+         * @static 
+         */ 
+        public static function getConfig()
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getConfig();
+        }
+        
+        /**
+         * Get the keys present in the message bag.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function keys()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->keys();
+        }
+        
+        /**
+         * Add a message to the message bag.
+         *
+         * @param string $key
+         * @param string $message
+         * @return \Prologue\Alerts\AlertsMessageBag 
+         * @static 
+         */ 
+        public static function add($key, $message)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->add($key, $message);
+        }
+        
+        /**
+         * Merge a new array of messages into the message bag.
+         *
+         * @param \Illuminate\Contracts\Support\MessageProvider|array $messages
+         * @return \Prologue\Alerts\AlertsMessageBag 
+         * @static 
+         */ 
+        public static function merge($messages)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->merge($messages);
+        }
+        
+        /**
+         * Determine if messages exist for all of the given keys.
+         *
+         * @param array|string $key
+         * @return bool 
+         * @static 
+         */ 
+        public static function has($key)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->has($key);
+        }
+        
+        /**
+         * Determine if messages exist for any of the given keys.
+         *
+         * @param array|string $keys
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasAny($keys = array())
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->hasAny($keys);
+        }
+        
+        /**
+         * Get the first message from the message bag for a given key.
+         *
+         * @param string $key
+         * @param string $format
+         * @return string 
+         * @static 
+         */ 
+        public static function first($key = null, $format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->first($key, $format);
+        }
+        
+        /**
+         * Get all of the messages from the message bag for a given key.
+         *
+         * @param string $key
+         * @param string $format
+         * @return array 
+         * @static 
+         */ 
+        public static function get($key, $format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->get($key, $format);
+        }
+        
+        /**
+         * Get all of the messages for every key in the message bag.
+         *
+         * @param string $format
+         * @return array 
+         * @static 
+         */ 
+        public static function all($format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->all($format);
+        }
+        
+        /**
+         * Get all of the unique messages for every key in the message bag.
+         *
+         * @param string $format
+         * @return array 
+         * @static 
+         */ 
+        public static function unique($format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->unique($format);
+        }
+        
+        /**
+         * Get the raw messages in the message bag.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function messages()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->messages();
+        }
+        
+        /**
+         * Get the raw messages in the message bag.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getMessages()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getMessages();
+        }
+        
+        /**
+         * Get the messages for the instance.
+         *
+         * @return \Illuminate\Support\MessageBag 
+         * @static 
+         */ 
+        public static function getMessageBag()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getMessageBag();
+        }
+        
+        /**
+         * Get the default message format.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getFormat()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getFormat();
+        }
+        
+        /**
+         * Set the default message format.
+         *
+         * @param string $format
+         * @return \Illuminate\Support\MessageBag 
+         * @static 
+         */ 
+        public static function setFormat($format = ':message')
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->setFormat($format);
+        }
+        
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isEmpty()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->isEmpty();
+        }
+        
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isNotEmpty()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->isNotEmpty();
+        }
+        
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function any()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->any();
+        }
+        
+        /**
+         * Get the number of messages in the message bag.
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function count()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->count();
+        }
+        
+        /**
+         * Get the instance as an array.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function toArray()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->toArray();
+        }
+        
+        /**
+         * Convert the object into something JSON serializable.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function jsonSerialize()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->jsonSerialize();
+        }
+        
+        /**
+         * Convert the object to its JSON representation.
+         *
+         * @param int $options
+         * @return string 
+         * @static 
+         */ 
+        public static function toJson($options = 0)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->toJson($options);
+        }
+         
+    }
+ 
+}
+
 
 namespace  { 
 
@@ -18227,6 +18590,8 @@ namespace  {
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
+
+    class Alert extends \Prologue\Alerts\Facades\Alert {}
  
 }
 

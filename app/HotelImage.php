@@ -20,6 +20,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelImage whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Hotel $hotel
+ * @property string $name
+ * @property string $type
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelImage whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelImage whereType($value)
  */
 class HotelImage extends Model
 {

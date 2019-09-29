@@ -58,13 +58,13 @@
                                 <td>{{ $hotel->sort }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a class="btn btn-info mr-2" href="$" title="Show"><i class="fa fa-eye"></i></a>
-                                        <a class="btn btn-success mr-2" href="{{ route('admin.hotel.facility.edit', $hotel) }}" title="Edit"><i class="fa fa-edit"></i></a>
-                                        <a class="btn btn-danger mr-2" href="{{ route('admin.hotel.facility.destroy', ['id' => $hotel->id]) }}" title="Delete"
+                                        <a class="btn btn-info mr-2" href="#" title="Show"><i class="fa fa-eye"></i></a>
+                                        <a class="btn btn-success mr-2" href="{{ route('admin.hotel.edit', $hotel) }}" title="Edit"><i class="fa fa-edit"></i></a>
+                                        <a class="btn btn-danger mr-2" href="{{ route('admin.hotel.destroy', ['id' => $hotel->id]) }}" title="Delete"
                                            onclick="event.preventDefault()
                                                    ;if(confirm('Deleted data cannot be returned?')){document.getElementById('hotel-destroy{{$hotel->id}}').submit();}"
                                         ><i class="fa fa-trash"></i></a>
-                                        <form id="hotel-destroy{{$hotel->id}}" action="{{ route('admin.hotel.facility.destroy', $hotel) }}" method="POST"
+                                        <form id="hotel-destroy{{$hotel->id}}" action="{{ route('admin.hotel.destroy', $hotel) }}" method="POST"
                                               style="display: none;">
                                             @csrf
                                             @method('delete')
@@ -77,6 +77,7 @@
                     <tfoot>
                     <tr>
                         <th rowspan="1" colspan="1">ID</th>
+                        <th rowspan="1" colspan="1">Hotel</th>
                         <th rowspan="1" colspan="1">Price</th>
                         <th rowspan="1" colspan="1">Time</th>
                         <th rowspan="1" colspan="1">Geolocation</th>

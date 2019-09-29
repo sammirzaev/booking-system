@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Prologue\Alerts\Facades\Alert;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -58,11 +59,33 @@ class AdminController extends Controller
     public function callAction($method, $parameters)
     {
         $action = parent::callAction($method, $parameters);
+
+        $this->flash();
+
         if($this->view){
             return $this->view
                     ->with('title', $this->title)
                     ->with('breadcrumbs', $this->breadcrumbs);
         }
         return $action;
+    }
+
+    /**
+     * Alert message for flash
+     */
+    protected function flash()
+    {
+        if(session('error')){
+            Alert::error(session('error'))->flash();
+        }
+        elseif(session('success')){
+            Alert::success(session('success'))->flash();
+        }
+        elseif(session('info')){
+            Alert::error(session('info'))->flash();
+        }
+        elseif(session('warning')){
+            Alert::success(session('warning'))->flash();
+        }
     }
 }

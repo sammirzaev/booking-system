@@ -24,6 +24,8 @@ class CreateHotelsTable extends Migration
             $table->integer('sort')->default(1)->unsigned();
             $table->integer('order_day')->nullable()->unsigned();
             $table->integer('cancel_day')->nullable()->unsigned();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
         });
     }
 

@@ -9,24 +9,20 @@ use Illuminate\Database\Eloquent\Model;
  * App\HotelSurround
  *
  * @property int $id
- * @property float|null $distance
- * @property int $hotel_id
- * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround whereDistance($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround whereHotelId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround whereId($value)
- * @mixin \Eloquent
+ * @property string|null $icon
+ * @property int $sort
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Hotel[] $hotels
+ * @property-read int|null $hotels_count
  * @property-read \App\HotelSurroundLanguage $language
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\HotelSurroundLanguage[] $languages
  * @property-read int|null $languages_count
- * @property string|null $icon
- * @property int $sort
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Hotel[] $hotel
- * @property-read int|null $hotel_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround whereIcon($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\HotelSurround whereSort($value)
+ * @mixin \Eloquent
  */
 class HotelSurround extends Model
 {
@@ -66,7 +62,7 @@ class HotelSurround extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function hotel()
+    public function hotels()
     {
         return $this->belongsToMany(Hotel::class, 'hotel_surround');
     }

@@ -4,7 +4,14 @@
             <div class="col-sm-3">
                 <div class="form-group clearfix">
                     <div class="icheck-primary d-inline">
-                        <input type="checkbox" name="hotelTypes[{{ $hotelType->id }}]" id="hotelTypes{{ $hotelType->id }}">
+                        <input type="checkbox" name="hotelTypes[{{ $hotelType->id }}]" id="hotelTypes{{ $hotelType->id }}"
+                        @if(old("hotelTypes.$hotelType->id"))
+                            checked
+                        @endif
+                        @if(isset($hotel->types) && $hotel->types->where('id', $hotelType->id)->isNotEmpty())
+                           checked
+                        @endif
+                        >
                         <label for="hotelTypes{{ $hotelType->id }}">
                             {{ $hotelType->language->title }}
                         </label>
