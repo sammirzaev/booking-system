@@ -1,5 +1,5 @@
 <div id="hotel" class="tab-pane fade in active">
-    <form action="{{ route('hotel.search') }}" method="get" class="colorlib-form">
+    <form action="{{ route('hotel.index') }}" method="get" class="colorlib-form">
         <div class="row">
             <div class="col-md-2">
                 <div class="booknow">

@@ -13,7 +13,7 @@
 
 Auth::routes();
 Route::get('/', 'IndexController@index')->name('index');
-Route::get('/search-hotel', 'HotelController@search')->name('hotel.search');
+Route::resource('/hotel', 'HotelController')->names('hotel');
 
 /**
  * User routes

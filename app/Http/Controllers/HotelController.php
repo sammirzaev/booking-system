@@ -9,23 +9,25 @@ use Illuminate\Http\Request;
 class HotelController extends FrontendController
 {
     /**
+     * @var Hotel
+     */
+    private $hotel;
+
+    /**
      * @var Location
      */
     protected $location;
 
     /**
-     * LocationController constructor.
+     * HotelController constructor.
+     *
+     * @param Hotel $hotel
      * @param Location $location
      */
-    public function __construct(Location $location)
+    public function __construct(Hotel $hotel, Location $location)
     {
+        $this->hotel = $hotel;
         $this->location = $location;
-    }
-
-    public function search()
-    {
-        return view('hotel.search')
-            ->with('locations', $this->location->all()->load('language'));
     }
 
     /**
@@ -35,7 +37,10 @@ class HotelController extends FrontendController
      */
     public function index()
     {
-        //
+        return view('hotel.index')
+            ->with('hotels', $this->hotel->paginate(config('paginate.user.all_hotels'))
+                ->load('language', 'image', 'bonuses'))
+            ->with('locations', $this->location->all()->load('language'));
     }
 
     /**

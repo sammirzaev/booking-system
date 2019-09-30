@@ -8,7 +8,7 @@
                 <div class="col-xs-10 text-right menu-1">
                     <ul>
                         <li class="{{ request()->routeIs('index') ? 'active' : '' }}"><a href="{{ route('index') }}">Home</a></li>
-                        <li class="{{ request()->routeIs('hotel.search') ? 'active' : '' }}"><a href="{{ route('hotel.search') }}">Hotels</a></li>
+                        <li class="{{ request()->routeIs('hotel.index') ? 'active' : '' }}"><a href="{{ route('hotel.index') }}">Hotels</a></li>
                         <li><a href="#">Cars</a></li>
                         <li><a href="#">Tours</a></li>
                         <li><a href="#">Activities</a></li>

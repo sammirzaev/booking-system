@@ -11,117 +11,40 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="wrap-division">
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="hotel-entry">
-                                    <a href="hotel-room.html" class="hotel-img" style="background-image: url({{ asset('img/hotel-1.jpg') }});">
-                                        <p class="price"><span>$120</span><small> /night</small></p>
-                                    </a>
-                                    <div class="desc">
-                                        <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                        <h3><a href="hotel-room.html">Hotel Edison</a></h3>
-                                        <span class="place">New York, USA</span>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                            @if(isset($hotels) && $hotels->isNotEmpty())
+                                @foreach($hotels as $hotel)
+                                <div class="col-md-6 col-sm-6 animate-box">
+                                    <div class="hotel-entry">
+                                        <a href="{{ route('hotel.show', $hotel) }}" class="hotel-img"
+                                           style="background-image: url({{
+                                           isset($hotel->image) && isset($hotel->image->name) &&
+                                           Storage::disk('public')->exists('hotels/' . $hotel->image->name)
+                                           ? asset("storage/hotels/" . $hotel->image->name)
+                                           : asset('img/default/hotel.jpg')  }});"
+                                        >
+                                            <p class="price"><span>${{ number_format($hotel->price_from) }}</span>
+                                                @if(isset($hotel->bonuses) && isset(current(current($hotel->bonuses->load('language')))->language->title))
+                                                    <small>/{{ current(current($hotel->bonuses->load('language')))->language->title }}</small>
+                                                @endif
+                                            </p>
+                                        </a>
+                                        <div class="desc">
+                                            <p class="star"><span>
+                                                    <i class="icon-star-full"></i>
+                                                    <i class="icon-star-full"></i>
+                                                    <i class="icon-star-full"></i>
+                                                    <i class="icon-star-full"></i>
+                                                    <i class="icon-star-full">
+                                                    </i></span> Good Reviews</p>
+                                            <h3><a href="{{ route('hotel.show', $hotel) }}">{{ $hotel->language->title }}</a></h3>
+                                            <span class="place">{{ $hotel->language->address }}</span>
+                                            <p>{{ \Str::limit($hotel->language->description, 100) }}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                @endforeach
+                            @endif
 
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="hotel-entry">
-                                    <a href="hotel-room.html" class="hotel-img" style="background-image: url({{ asset('img/hotel-2.jpg') }});">
-                                        <p class="price"><span>$120</span><small> /night</small></p>
-                                    </a>
-                                    <div class="desc">
-                                        <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                        <h3><a href="hotel-room.html">Hotel Edison</a></h3>
-                                        <span class="place">New York, USA</span>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="hotel-entry">
-                                    <a href="hotel-room.html" class="hotel-img" style="background-image: url({{ asset('img/hotel-3.jpg') }});">
-                                        <p class="price"><span>$120</span><small> /night</small></p>
-                                    </a>
-                                    <div class="desc">
-                                        <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                        <h3><a href="hotel-room.html">Hotel Edison</a></h3>
-                                        <span class="place">New York, USA</span>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="hotel-entry">
-                                    <a href="hotel-room.html" class="hotel-img" style="background-image: url({{ asset('img/hotel-4.jpg') }});">
-                                        <p class="price"><span>$120</span><small> /night</small></p>
-                                    </a>
-                                    <div class="desc">
-                                        <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                        <h3><a href="hotel-room.html">Hotel Edison</a></h3>
-                                        <span class="place">New York, USA</span>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="hotel-entry">
-                                    <a href="hotel-room.html" class="hotel-img" style="background-image: url({{ asset('img/hotel-5.jpg') }});">
-                                        <p class="price"><span>$120</span><small> /night</small></p>
-                                    </a>
-                                    <div class="desc">
-                                        <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                        <h3><a href="hotel-room.html">Hotel Edison</a></h3>
-                                        <span class="place">New York, USA</span>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="hotel-entry">
-                                    <a href="hotel-room.html" class="hotel-img" style="background-image: url({{ asset('img/hotel-6.jpg') }});">
-                                        <p class="price"><span>$120</span><small> /night</small></p>
-                                    </a>
-                                    <div class="desc">
-                                        <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                        <h3><a href="hotel-room.html">Hotel Edison</a></h3>
-                                        <span class="place">New York, USA</span>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="hotel-entry">
-                                    <a href="hotel-room.html" class="hotel-img" style="background-image: url({{ asset('img/hotel-7.jpg') }});">
-                                        <p class="price"><span>$120</span><small> /night</small></p>
-                                    </a>
-                                    <div class="desc">
-                                        <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                        <h3><a href="hotel-room.html">Hotel Edison</a></h3>
-                                        <span class="place">New York, USA</span>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="hotel-entry">
-                                    <a href="hotel-room.html" class="hotel-img" style="background-image: url({{ asset('img/hotel-8.jpg') }});">
-                                        <p class="price"><span>$120</span><small> /night</small></p>
-                                    </a>
-                                    <div class="desc">
-                                        <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                        <h3><a href="hotel-room.html">Hotel Edison</a></h3>
-                                        <span class="place">New York, USA</span>
-                                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
@@ -195,13 +118,15 @@
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">
-                                                <p class="rate"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span></p>
+                                                <p class="rate"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i
+                                                                class="icon-star-full"></i></span></p>
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                             <label class="form-check-label" for="exampleCheck1">
-                                                <p class="rate"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span></p>
+                                                <p class="rate"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span>
+                                                </p>
                                             </label>
                                         </div>
                                         <div class="form-check">

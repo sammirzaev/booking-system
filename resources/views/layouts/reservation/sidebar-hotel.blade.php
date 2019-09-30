@@ -1,6 +1,6 @@
 <div class="side search-wrap animate-box">
     <h3 class="sidebar-heading">Find your hotel</h3>
-    <form action="{{ route('hotel.search') }}" method="post" class="colorlib-form">
+    <form action="{{ route('hotel.index') }}" method="post" class="colorlib-form">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
