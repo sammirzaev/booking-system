@@ -53,9 +53,17 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereStar($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel whereStatus($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\RoomAvailability[] $availabilities
+ * @property-read int|null $availabilities_count
+ * @property-read \App\HotelImage $image
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Room[] $rooms
+ * @property-read int|null $rooms_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Hotel active()
  */
 class Hotel extends Model
 {
+    const STATUS_ACTIVE = 0;
+
     use Sortable;
 
     /**
@@ -154,5 +162,32 @@ class Hotel extends Model
     public function locations()
     {
         return $this->belongsToMany(Location::class, 'hotel_location');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function availabilities()
+    {
+        return $this->hasMany(RoomAvailability::class);
+    }
+
+    /**
+     * Scope a query to only include active hotels.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status',  self::STATUS_ACTIVE);
     }
 }
