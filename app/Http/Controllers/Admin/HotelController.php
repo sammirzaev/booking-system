@@ -224,23 +224,123 @@ class HotelController extends AdminController
     /**
      * Update the specified resource in storage.
      *
-     * @param  HotelRequest $request
-     * @param  \App\Hotel  $hotel
-     * @return \Illuminate\Http\Response
+     * @param HotelRequest $request
+     * @param Hotel $hotel
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function update(HotelRequest $request, Hotel $hotel)
     {
-        //
+        $hotel->star          = $request->input('mainStar');
+        $hotel->price_from    = $request->input('mainPriceFrom');
+        $hotel->price_to      = $request->input('mainPriceTo');
+        $hotel->check_in      = $request->input('mainCheckin');
+        $hotel->check_out     = $request->input('mainCheckout');
+        $hotel->status        = $request->input('mainStatus');
+        $hotel->sort          = $request->input('mainSort');
+        $hotel->order_day     = $request->input('mainBookingDay');
+        $hotel->cancel_day    = $request->input('mainCancelDay');
+        $hotel->latitude      = $request->input('locationLatitude');
+        $hotel->longitude     = $request->input('locationLongitude');
+
+        DB::beginTransaction();
+        if ($hotel->update()) {
+            foreach (config('settings.locales') as $lang) {
+                $hotel->language()->where('lang', $lang)
+                    ->update([
+                        'title' => $request->input("mainTitle.$lang"),
+                        'address' => $request->input("mainAddress.$lang"),
+                        'description' => $request->input("mainDescription.$lang"),
+                    ]);
+            }
+            if ($request->hasFile("mediaUploaded")){
+                $mediaUploaded = [];
+                foreach ($request->file("mediaUploaded") as $media){
+                    $upload = $media->store('hotels', 'public');
+
+                    if($upload){
+                        $mediaUploaded[] = [
+                            'name' => str_replace('hotels/', '', $upload),
+                            'type' => $media->getMimeType(),
+                            'hotel_id' => $hotel->id
+                        ];
+                    }
+                    if($media->isFile()){
+                        unlink($media->getRealPath());
+                    }
+                }
+                $hotel->images()->createMany($mediaUploaded);
+            }
+            if ($request->input("locationId")){
+                $hotel->locations()->sync($request->input("locationId"));
+            }
+            if ($request->input("hotelTypes")){
+                $hotelTypes = [];
+                foreach ($request->input("hotelTypes") as $key => $item){
+                    array_push($hotelTypes, $key);
+                }
+                $hotel->types()->sync($hotelTypes);
+            }
+            if ($request->input("hotelFacilities")){
+                $hotelFacilities = [];
+                foreach ($request->input("hotelFacilities") as $key => $item){
+                    array_push($hotelFacilities, $key);
+                }
+                $hotel->facilities()->sync($hotelFacilities);
+            }
+            if ($request->input("hotelSurroundsName")){
+                $hotelSurrounds = [];
+                foreach ($request->input("hotelSurroundsName") as $key => $hotelSurroundsName){
+                    if($hotelSurroundsName){
+                        $hotelSurrounds[$key] = [
+                            'name'      => $hotelSurroundsName,
+                            'distance'  => $request->input("hotelSurroundsDistance.$key"),
+                            'latitude'  => $request->input("hotelSurroundsLatitude.$key"),
+                            'longitude' => $request->input("hotelSurroundsLongitude.$key")
+                        ];
+                    }
+                }
+                if(current($hotelSurrounds)){
+                    $hotel->surrounds()->sync($hotelSurrounds);
+                }
+            }
+            if ($request->input("hotelBonuses")){
+                $hotelBonuses = [];
+                foreach ($request->input("hotelBonuses") as $key => $item){
+                    array_push($hotelBonuses, $key);
+                }
+                $hotel->bonuses()->sync($hotelBonuses);
+            }
+                DB::commit();
+                return redirect()->route('admin.hotel.index')->with(['success' => 'Hotel bonus updated successfully']);
+        }
+        DB::rollBack();
+        return back()->with('error', 'Error');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Hotel  $hotel
-     * @return \Illuminate\Http\Response
+     * @param Hotel $hotel
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Hotel $hotel)
     {
-        //
+        if($this->useCheck($hotel) && $hotel->delete()){
+            return redirect()->route('admin.hotel.index')->with('success', 'Hotel deleted successfully');
+        }
+        return back()->with('error', 'Error');
+    }
+
+    /**
+     * Check location on used other Models
+     *
+     * @param Hotel $hotel
+     * @return bool
+     */
+    protected function useCheck($hotel)
+    {
+        return true;
     }
 }
