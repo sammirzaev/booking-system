@@ -186,7 +186,7 @@ class HotelController extends AdminController
                     $this->hotel->bonuses()->sync($hotelBonuses);
                 }
                 DB::commit();
-                return redirect()->route('admin.hotel.index')->with(['success' => 'Hotel bonus saved successfully']);
+                return redirect()->route('admin.hotel.index')->with(['success' => 'Hotel saved successfully']);
             }
         }
         DB::rollBack();
@@ -312,7 +312,7 @@ class HotelController extends AdminController
                 $hotel->bonuses()->sync($hotelBonuses);
             }
                 DB::commit();
-                return redirect()->route('admin.hotel.index')->with(['success' => 'Hotel bonus updated successfully']);
+                return redirect()->route('admin.hotel.index')->with(['success' => 'Hotel updated successfully']);
         }
         DB::rollBack();
         return back()->with('error', 'Error');

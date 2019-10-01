@@ -1,4 +1,5 @@
 <?php
 return [
-    'hotel' => ['active', 'blocked']
+    'hotel' => ['active', 'blocked'],
+    'room' => ['free', 'blocked', 'booked'],
 ];

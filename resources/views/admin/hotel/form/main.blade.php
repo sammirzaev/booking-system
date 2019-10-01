@@ -68,19 +68,21 @@
         <p class="text-danger">{{ $message }}</p>
         @enderror
     </div>
-    <div class="col-4">
-        <label class="required" for="mainStatus">Status</label>
-        <select name="mainStatus" id="mainStatus" class="select2 @error("mainStatus") is-invalid @enderror" data-placeholder="Select a Status" required>
-            @foreach(config('status.hotel') as $key => $status)
-                <option value="{{ $key }}"
-                        @if((isset($hotel->status) && $hotel->status == $key) || ($key == old('mainStatus')))
-                        selected
-                        @endif>{{ $status }}</option>
-            @endforeach
-        </select>
-        @error("mainStatus")
-        <p class="text-danger">{{ $message }}</p>
-        @enderror
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="required" for="mainStatus">Status</label>
+            <select name="mainStatus" id="mainStatus" class="form-control select2 @error("mainStatus") is-invalid @enderror" data-placeholder="Select a Status" required>
+                @foreach(config('status.hotel') as $key => $status)
+                    <option value="{{ $key }}"
+                            @if((isset($hotel->status) && $hotel->status == $key) || ($key == old('mainStatus')))
+                            selected
+                            @endif>{{ $status }}</option>
+                @endforeach
+            </select>
+            @error("mainStatus")
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
     </div>
 </div>
 <div class="row mt-3">

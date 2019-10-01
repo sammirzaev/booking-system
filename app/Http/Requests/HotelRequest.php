@@ -24,7 +24,7 @@ class HotelRequest extends FormRequest
         $validator = parent::getValidatorInstance();
 
 //        hotel
-        $validator->sometimes('mainPriceTo', 'numeric|digits_between:1,1000000', function ($input) {
+        $validator->sometimes('mainPriceTo', 'nullable|numeric|max:1000000', function ($input) {
             return !empty($input->mainPriceTo) ?? $input->mainPriceTo;
         });
         $validator->sometimes('mainCheckin', 'date_format:H:i', function ($input) {
@@ -55,7 +55,7 @@ class HotelRequest extends FormRequest
         return [
 //            hotel
             'mainStar'          => 'integer|nullable',
-            'mainPriceFrom'     => 'required|numeric|digits_between:1,1000000',
+            'mainPriceFrom'     => 'required|numeric|max:1000000',
             'mainSort'          => 'integer|nullable',
 //            'locationLatitude' => '',
 //            'locationLongitude' => '',

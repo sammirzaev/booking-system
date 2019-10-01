@@ -84,25 +84,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link ml-4">
+                                <a href="{{ route('admin.room.index') }}" class="nav-link ml-4">
                                     <i class="nav-icon fas fa-list"></i>
                                     <p>Rooms List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link ml-4">
+                                <a href="{{ route('admin.room.facility.index') }}" class="nav-link ml-4">
                                     <i class="nav-icon fas fa-sliders-h"></i>
                                     <p>Facilities List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link ml-4">
+                                <a href="{{ route('admin.room.type.index') }}" class="nav-link ml-4">
                                     <i class="nav-icon fas fa-text-height"></i>
                                     <p>Type List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link ml-4">
+                                <a href="{{ route('admin.room.bonus.index') }}" class="nav-link ml-4">
                                     <i class="nav-icon fas fa-archive"></i>
                                     <p>Bonus List</p>
                                 </a>

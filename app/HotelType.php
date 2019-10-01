@@ -47,7 +47,7 @@ class HotelType extends Model
      */
     public function languages()
     {
-        return $this->hasMany(HotelTypeLanguages::class);
+        return $this->hasMany(HotelTypeLanguage::class);
     }
 
     /**
@@ -55,6 +55,6 @@ class HotelType extends Model
      */
     public function language()
     {
-        return $this->hasOne(HotelTypeLanguages::class)->where('lang', App::getLocale());
+        return $this->hasOne(HotelTypeLanguage::class)->where('lang', App::getLocale());
     }
 }
