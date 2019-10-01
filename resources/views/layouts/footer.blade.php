@@ -3,7 +3,7 @@
         <div class="row row-pb-md">
             <div class="col-md-3 colorlib-widget">
                 <h4>sayyah.uz</h4>
-                <p>Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit. Eos cumque dicta adipisci architecto culpa amet.</p>
+                <p>Best choice</p>
                 <p>
                 <ul class="colorlib-social-icons">
                     <li><a href="#"><i class="icon-twitter"></i></a></li>

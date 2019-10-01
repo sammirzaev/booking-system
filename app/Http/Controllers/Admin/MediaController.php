@@ -75,11 +75,22 @@ class MediaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string  $model
+     * @param  string  $name
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($model, $name)
     {
-        //
+        switch ($model){
+            case $model === 'hotel':
+                //
+                return response();
+                break;
+            case $model === 'room':
+                //
+                return response();
+                break;
+        }
+
     }
 }
