@@ -281,12 +281,18 @@ class HotelController extends AdminController
                 }
                 $hotel->types()->sync($hotelTypes);
             }
+            else{
+                $hotel->types()->detach();
+            }
             if ($request->input("hotelFacilities")){
                 $hotelFacilities = [];
                 foreach ($request->input("hotelFacilities") as $key => $item){
                     array_push($hotelFacilities, $key);
                 }
                 $hotel->facilities()->sync($hotelFacilities);
+            }
+            else{
+                $hotel->facilities()->detach();
             }
             if ($request->input("hotelSurroundsName")){
                 $hotelSurrounds = [];
@@ -303,6 +309,9 @@ class HotelController extends AdminController
                 if(current($hotelSurrounds)){
                     $hotel->surrounds()->sync($hotelSurrounds);
                 }
+                else{
+                    $hotel->surrounds()->detach();
+                }
             }
             if ($request->input("hotelBonuses")){
                 $hotelBonuses = [];
@@ -310,6 +319,9 @@ class HotelController extends AdminController
                     array_push($hotelBonuses, $key);
                 }
                 $hotel->bonuses()->sync($hotelBonuses);
+            }
+            else{
+                $hotel->bonuses()->detach();
             }
                 DB::commit();
                 return redirect()->route('admin.hotel.index')->with(['status' => 'Hotel updated successfully']);

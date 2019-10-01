@@ -283,12 +283,18 @@ class RoomController extends AdminController
                 }
                 $room->facilities()->sync($roomFacilities);
             }
+            else{
+                $room->facilities()->detach();
+            }
             if ($request->input("roomBonuses")){
                 $roomBonuses = [];
                 foreach ($request->input("roomBonuses") as $key => $item){
                     array_push($roomBonuses, $key);
                 }
                 $room->bonuses()->sync($roomBonuses);
+            }
+            else{
+                $room->bonuses()->detach();
             }
             if ($request->input("detailAdults")){
                 $room->detail()->where('room_id', $room->id)
