@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hotel;
+use App\Room;
 use App\Location;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,11 @@ class HotelController extends FrontendController
     private $hotel;
 
     /**
+     * @var Room
+     */
+    private $room;
+
+    /**
      * @var Location
      */
     protected $location;
@@ -22,11 +28,13 @@ class HotelController extends FrontendController
      * HotelController constructor.
      *
      * @param Hotel $hotel
+     * @param Room $room
      * @param Location $location
      */
-    public function __construct(Hotel $hotel, Location $location)
+    public function __construct(Hotel $hotel, Room $room, Location $location)
     {
         $this->hotel = $hotel;
+        $this->room = $room;
         $this->location = $location;
     }
 
@@ -72,7 +80,13 @@ class HotelController extends FrontendController
      */
     public function show(Hotel $hotel)
     {
-        //
+//        $rooms = $hotel->rooms;
+//        dd($rooms->load('language', ''));
+        return view('hotel.show')
+            ->with('hotel', $hotel->load('language', 'images', 'bonuses'))
+            ->with('locations', $this->location->all()->load('language'));
+//            ->with('rooms', $this->room->where('hotel_id')->load('language', 'images', 'bonuses'))
+//            ;
     }
 
     /**
