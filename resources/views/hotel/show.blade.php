@@ -28,13 +28,16 @@
                                                        Storage::disk('public')->exists('rooms/' . $room->image->name)
                                                        ? asset("storage/rooms/" . $room->image->name)
                                                        : asset('img/default/room-l.jpg')  }});">
-
                                                     </div>
                                                     </div>
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="desc">
                                                             <h2>{{ $room->type->first()->language->title }}</h2>
-                                                            <p class="price"><span>$45</span> <small>/ night</small></p>
+                                                            <p class="price"><span>${{ $room->price }}</span>
+                                                                @if(isset($room->bonuses) && ($room->bonuses->first()))
+                                                                    <small>/{{ $room->bonuses->first()->language->title }}</small>
+                                                                @endif
+                                                            </p>
                                                             <p>{{ Str::limit($room->language->description , 200) }}</p>
                                                             <p><a href="#" class="btn btn-primary">Book Now!</a></p>
                                                         </div>
@@ -43,6 +46,10 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                @else
+                                    <div class="col-md-12 col-md-offset-0 heading2 animate-box">
+                                        <h3>Not available rooms</h3>
+                                    </div>
                                 @endif
 
                                 </div>

@@ -193,7 +193,7 @@ class RoomController extends AdminController
                     $this->room->availabilities()->createMany($roomAvailabilities);
                 }
                 DB::commit();
-                return redirect()->route('admin.room.index')->with(['success' => 'Room saved successfully']);
+                return redirect()->route('admin.room.index')->with(['status' => 'Room saved successfully']);
             }
         }
         DB::rollBack();
@@ -313,7 +313,7 @@ class RoomController extends AdminController
                 }
             }
             DB::commit();
-            return redirect()->route('admin.room.index')->with(['success' => 'Room updated successfully']);
+            return redirect()->route('admin.room.index')->with(['status' => 'Room updated successfully']);
         }
         DB::rollBack();
         return back()->with('error', 'Error');
@@ -329,7 +329,7 @@ class RoomController extends AdminController
     public function destroy(Room $room)
     {
         if($this->useCheck($room) && $room->delete()){
-            return redirect()->route('admin.room.index')->with('success', 'Room deleted successfully');
+            return redirect()->route('admin.room.index')->with('status', 'Room deleted successfully');
         }
         return back()->with('error', 'Error');
     }
