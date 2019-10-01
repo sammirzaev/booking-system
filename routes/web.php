@@ -14,12 +14,15 @@
 Auth::routes();
 Route::get('/', 'IndexController@index')->name('index');
 Route::resource('/hotel', 'HotelController')->names('hotel');
+Route::resource('/hotel-check-out', 'HotelCheckOutController')->names('hotel.check.out');
+Route::resource('/room-search', 'RoomSearchController')->names('room.search');
 
 /**
  * User routes
  */
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::get('/dashboard', 'DashboardController@index')->name('index');
+    Route::resource('/order', 'OrderController')->names('order');
 });
 
 /**
@@ -27,6 +30,7 @@ Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
  */
 Route::middleware(['auth', 'auth.admin'])->prefix('backend')->namespace('Admin')->name('admin.')->group(function () {
     Route::get('/', 'IndexController@index')->name('index');
+    Route::resource('/order', 'OrderController')->names('order');
 
     Route::resource('/location', 'LocationController')->names('location');
     Route::resource('/media', 'MediaController')->names('media');

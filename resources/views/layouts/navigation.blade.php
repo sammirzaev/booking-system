@@ -31,11 +31,11 @@
                                     Dashboard
                                 </a>
                                 <ul class="dropdown">
-                                    <li><a href="#"><i class="fa fa-heart"></i> Wishlist </a></li>
-                                    <li><a href="#"><i class="fa fa-cart-arrow-down"></i> Cart </a></li>
-                                    <li><a href="#"><i class="fa fa-wpexplorer"></i> Orders </a></li>
-                                    <li><a href="#"><i class="fa fa-bell"></i> Notification </a></li>
-                                    <li><a href="#"><i class="fa fa-cog"></i> Settings </a></li>
+{{--                                    <li><a href="#"><i class="fa fa-heart"></i> Wishlist </a></li>--}}
+{{--                                    <li><a href="#"><i class="fa fa-cart-arrow-down"></i> Cart </a></li>--}}
+                                    <li><a href="{{ route('user.order.index') }}"><i class="fa fa-wpexplorer"></i> Orders </a></li>
+{{--                                    <li><a href="#"><i class="fa fa-bell"></i> Notification </a></li>--}}
+{{--                                    <li><a href="#"><i class="fa fa-cog"></i> Settings </a></li>--}}
                                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();"><i class="fa fa-key"></i> Logout </a></li>
                                 </ul>
