@@ -22,7 +22,6 @@
                                             <div class="room-wrap">
                                                 <div class="row">
                                                     <div class="col-md-6 col-sm-6">
-{{--                                                            @dd($room->image)--}}
                                                         <div class="room-img" style="background-image: url({{
                                                        isset($room->image) && isset($room->image->name) &&
                                                        Storage::disk('public')->exists('rooms/' . $room->image->name)
@@ -33,13 +32,13 @@
                                                     <div class="col-md-6 col-sm-6">
                                                         <div class="desc">
                                                             <h2>{{ $room->type->first()->language->title }}</h2>
-                                                            <p class="price"><span>${{ $room->price }}</span>
+                                                            <p class="price"><span>${{ number_format($room->price) }}</span>
                                                                 @if(isset($room->bonuses) && ($room->bonuses->first()))
                                                                     <small>/{{ $room->bonuses->first()->language->title }}</small>
                                                                 @endif
                                                             </p>
                                                             <p>{{ Str::limit($room->language->description , 200) }}</p>
-                                                            <p><a href="#" class="btn btn-primary">Book Now!</a></p>
+                                                            <p><span class="btn btn-primary open-modal-btn">Book Now!</span></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -266,4 +265,70 @@
             </div>
         </div>
     </div>
+    @include('modal.booking-room')
 @endsection
+
+@push('css')
+    <style>
+        .cover {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.6;
+            z-index: 100;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            text-align: center;
+            overflow-x: auto;
+            overflow-y: scroll;
+            padding: 20px;
+            z-index: 200;
+        }
+        .content {
+            display: none;
+            width: 100%;
+            min-width: 200px;
+            width: 100%;
+            position: relative;
+            background-color: #2C2E3E;
+            z-index: 300;
+            padding: 50px 0;
+        }
+    </style>
+@endpush
+
+@push('js')
+    <script type="text/javascript">
+        $(function() {
+// open modal
+            var wrap = $('#wrapper'),
+                btn = $('.open-modal-btn'),
+                modal = $('.cover, .modal, .content');
+
+            btn.on('click', function() {
+                modal.fadeIn();
+            });
+
+// close modal
+            $('.modal').click(function() {
+                wrap.on('click', function(event) {
+                    var select = $('.content');
+                    if ($(event.target).closest(select).length)
+                        return;
+                    modal.fadeOut();
+                    wrap.unbind('click');
+                });
+            });
+        });
+    </script>
+@endpush
