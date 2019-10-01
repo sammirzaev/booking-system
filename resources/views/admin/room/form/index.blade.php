@@ -97,7 +97,6 @@
     <link rel="stylesheet" href="{{ asset('admin/css/daterangepicker.css') }}">
 @endpush
 
-                value=""
 @push('js')
     <script type="text/javascript" src="{{ asset('admin/js/select2.full.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admin/js/ekko-lightbox.min.js') }}"></script>
