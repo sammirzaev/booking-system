@@ -38,7 +38,7 @@
                                                                 @endif
                                                             </p>
                                                             <p>{{ Str::limit($room->language->description , 200) }}</p>
-                                                            <p><span class="btn btn-primary open-modal-btn">Book Now!</span></p>
+                                                            <p><span class="btn btn-primary open-modal-btn" data-id="{{ $room->id }}">Book Now!</span></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -310,16 +310,51 @@
 @push('js')
     <script type="text/javascript">
         $(function() {
-// open modal
+            var room_id;
+            $('#room_search').submit(function(e){
+                let data = $(this).serialize();
+                // console.log(data);
+                e.preventDefault();
+
+                var request = $.ajax({
+                    type:'GET',
+                    url:'{{ route('room.search.index') }}',
+                    data: data,
+                    dataType: "html"
+                });
+                request.done(function(msg) {
+                    console.log(msg);
+                   let res = JSON.parse(msg);
+                    if(res.status){
+                        $("#modal-status").attr('class', 'show');
+                        $("#modal-error").attr('class', 'hide');
+                        $("#model-checkout").attr('href', '/hotel-check-out/' + room_id);
+                    }
+                    else if(res.error){
+                        $("#modal-status").attr('class', 'hide');
+                        $("#modal-error").attr('class', 'show');
+                        $("#modal-error").html( res.error );
+                        $("#model-checkout").attr('href', '#');
+                    }
+                });
+
+                request.fail(function(jqXHR, textStatus) {
+                    alert( "Request failed: " + textStatus );
+                });
+            });
+
+            // open modal
             var wrap = $('#wrapper'),
                 btn = $('.open-modal-btn'),
                 modal = $('.cover, .modal, .content');
 
             btn.on('click', function() {
                 modal.fadeIn();
+                room_id = btn.attr('data-id');
+                $('#room_id').val(room_id);
             });
 
-// close modal
+            // close modal
             $('.modal').click(function() {
                 wrap.on('click', function(event) {
                     var select = $('.content');

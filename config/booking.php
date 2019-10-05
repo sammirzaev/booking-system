@@ -27,6 +27,9 @@ return [
         ],
         'admin' => [
             'max_booking_range_day' => 180
+        ],
+        'user' => [
+            'max_booking_range_day' => 180
         ]
 
     ],

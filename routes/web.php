@@ -14,8 +14,8 @@
 Auth::routes();
 Route::get('/', 'IndexController@index')->name('index');
 Route::resource('/hotel', 'HotelController')->names('hotel');
-Route::resource('/hotel-check-out', 'HotelCheckOutController')->names('hotel.check.out');
-Route::resource('/room-search', 'RoomSearchController')->names('room.search');
+Route::resource('/hotel-check-out', 'HotelCheckOutController')->only('index')->names('hotel.check.out');
+Route::resource('/room-search', 'RoomSearchController')->only('index')->names('room.search');
 
 /**
  * User routes
