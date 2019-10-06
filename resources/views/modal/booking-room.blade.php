@@ -34,7 +34,7 @@
                             <label for="roo_adult">Adult:</label>
                             <div class="form-field">
                                 <i class="icon icon-man"></i>
-                                <input type="number" name="adult" id="roo_adult" class="form-control" placeholder="Enter adult" required>
+                                <input type="number" name="adult" id="roo_adult" class="form-control" placeholder="Enter adult" required min="1">
                             </div>
                         </div>
                     </div>

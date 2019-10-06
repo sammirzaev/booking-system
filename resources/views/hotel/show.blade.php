@@ -329,7 +329,7 @@
                     if(res.status){
                         $("#modal-status").attr('class', 'show');
                         $("#modal-error").attr('class', 'hide');
-                        $("#model-checkout").attr('href', '/hotel-check-out?' + data);
+                        $("#model-checkout").attr('href', '{{ route('hotel.checkout.index') }}?' + data);
                     }
                     else if(res.error){
                         $("#modal-status").attr('class', 'hide');
@@ -351,7 +351,7 @@
 
             btn.on('click', function() {
                 modal.fadeIn();
-                room_id = btn.attr('data-id');
+                room_id = $(this).attr("data-id");
                 $('#room_id').val(room_id);
             });
 
@@ -361,6 +361,11 @@
                     var select = $('.content');
                     if ($(event.target).closest(select).length)
                         return;
+                    $("#modal-error").attr('class', 'hide');
+                    $("#modal-status").attr('class', 'hide');
+                    room_id = '';
+                    $('#room_id').val(room_id);
+                    data = '';
                     modal.fadeOut();
                     wrap.unbind('click');
                 });
