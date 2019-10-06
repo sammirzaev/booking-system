@@ -156,9 +156,9 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table class="float-right table-bordered table-hover">
+                        <div class="col-6">
+                            <div class="table-responsive">
+                                <table class="table">
                                     <tr>
                                         <td><label>Subtotal:</label></td>
                                         <td>${{ (isset($room) && $room->price) ? request()->input('adult') ? request()->input('adult')*$room->price : 1 : 'Error' }}</td>
