@@ -20,11 +20,11 @@
                         @if(!auth()->id())
                             <div class="row form-group">
                                 <div class="col-md-6 padding-bottom">
-                                    <label for="fist_name" class="required">First Name</label>
-                                    <input type="text" name="fist_name" id="fist_name" class="form-control @error('fist_name') is-invalid @enderror"
+                                    <label for="first_name" class="required">First Name</label>
+                                    <input type="text" name="first_name" id="first_name" class="form-control @error('first_name') is-invalid @enderror"
                                            placeholder="Your first name" required
-                                           value="{{ old('fist_name') }}">
-                                    @error('fist_name')
+                                           value="{{ old('first_name') }}">
+                                    @error('first_name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -161,7 +161,7 @@
                                 <table class="float-right table-bordered table-hover">
                                     <tr>
                                         <td><label>Subtotal:</label></td>
-                                        <td>${{ (isset($room) && $room->price) ? $room->price : 'Error' }}</td>
+                                        <td>${{ (isset($room) && $room->price) ? request()->input('adult') ? request()->input('adult')*$room->price : 1 : 'Error' }}</td>
                                     </tr>
                                     <tr>
                                         <td><label>Deposit:</label></td>

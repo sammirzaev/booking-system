@@ -36,6 +36,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUserId($value)
  * @mixin \Eloquent
+ * @property int $order_type
+ * @property int $adults
+ * @property int|null $children
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereAdults($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereChildren($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereOrderType($value)
  */
 class Order extends Model
 {

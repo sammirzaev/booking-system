@@ -36,6 +36,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property-read \App\UserDetail $detail
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
  * @property-read int|null $orders_count
+ * @property string|null $last_name
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereLastName($value)
  */
 class User extends Authenticatable
 {

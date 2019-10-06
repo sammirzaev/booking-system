@@ -2,23 +2,41 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Hotel;
 use App\Order;
+use App\Room;
 use Illuminate\Http\Request;
 
 class OrderController extends AdminController
 {
+    const STATUS_ROOM_FREE = null;
+    const STATUS_ROOM_BOOKED = 2;
     /**
      * @var Order
      */
     protected $order;
 
     /**
+     * @var Hotel
+     */
+    private $hotel;
+
+    /**
+     * @var Room
+     */
+    private $room;
+
+    /**
      * OrderController constructor.
      * @param Order $order
+     * @param Hotel $hotel
+     * @param Room $room
      */
-    public function __construct(Order $order)
+    public function __construct(Order $order, Hotel $hotel, Room $room)
     {
         $this->order = $order;
+        $this->hotel = $hotel;
+        $this->room = $room;
 
         parent::__construct();
         $this->title = 'Order';
@@ -32,7 +50,10 @@ class OrderController extends AdminController
      */
     public function index()
     {
-        return $this->view;
+        return $this->view
+            ->with('orders', $this->order::orderByDesc('id')->get())
+            ->with('rooms', $this->room->all()->load('type'))
+            ->with('hotels', $this->hotel->all()->load('language'));
     }
 
     /**
@@ -76,7 +97,10 @@ class OrderController extends AdminController
      */
     public function edit(Order $order)
     {
-        //
+        return $this->view
+            ->with('order', $order)
+            ->with('rooms', $this->room->all()->load('type'))
+            ->with('hotels', $this->hotel->all()->load('language'));
     }
 
     /**
@@ -89,7 +113,31 @@ class OrderController extends AdminController
      */
     public function update(Request $request, Order $order)
     {
-        //
+        if($order->status !== $request->input('status')){
+            if($order->update(['status' => $request->input('status')])){
+
+                $this->room = $this->room::whereId($order->type)->first();
+
+                $roomAvailableStatus = self::STATUS_ROOM_BOOKED;
+                if($request->input('status') > 3){
+                    $roomAvailableStatus = self::STATUS_ROOM_FREE;
+                }
+
+                if($this->room){
+                    for($i = $order->date_start;
+                        $i <= $order->date_end;
+                        $i = date('Y-m-d', strtotime($i. ' + 1 day'))
+                    ){
+                        $this->room->availabilities()->where('current_date', strtotime($i))->update([
+                                'status'  => $roomAvailableStatus,
+                            ]
+                        );
+                    }
+                }
+            }
+            return redirect()->route('admin.order.index')->with('status', 'Order changed successfully');
+        }
+        return redirect()->back()->with('error', 'Order changed error');
     }
 
     /**

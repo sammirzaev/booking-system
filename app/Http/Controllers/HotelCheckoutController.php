@@ -11,6 +11,10 @@ use App\Http\Requests\HotelCheckoutRequest;
 
 class HotelCheckoutController extends FrontendController
 {
+    const OBJECT_TYPE = 1;
+    const STATUS_ROOM_BOOKED = 2;
+    const STATUS_ORDER_ROOM_PENDING = 1;
+
     /**
      * @var Hotel
      */
@@ -45,7 +49,7 @@ class HotelCheckoutController extends FrontendController
                 ->with('room', $this->room->whereId(request()->only('room_id'))->first()
                     ->load('language', 'image'));
         }
-        redirect()->back();
+        return redirect()->back();
     }
 
     /**
@@ -59,20 +63,19 @@ class HotelCheckoutController extends FrontendController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
+     * @param HotelCheckoutRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(HotelCheckoutRequest $request)
     {
         if (!auth()->id()){
-            $newPassword = rand(8,10);
+            $newPassword = bcrypt(\Str::random(10));
 
             $user = new User();
-            $user->name = $request->input('first_name');
-            $user->last_name = $request->input('last_name');
-            $user->email = $request->input('email');
-            $user->password = $newPassword;
+            $user->name         = $request->input('first_name');
+            $user->last_name    = $request->input('last_name');
+            $user->email        = $request->input('email');
+            $user->password     = $newPassword;
 
             if ($user->save())
                 $user->detail()->create([
@@ -84,14 +87,39 @@ class HotelCheckoutController extends FrontendController
                     'zip'       => $request->input('zip'),
                     'user_id'   => $user->id
             ]);
-
             auth()->login($user);
         }
 
-        $order = new Order();
+        $this->room = $this->room::whereId($request->input('room_id'))->first();
 
-//        $oder->
-        redirect()->back();
+        $order = new Order();
+        $order->order_type      = self::OBJECT_TYPE;
+        $order->object          = $this->room->hotel_id;
+        $order->type            = $this->room->id;
+        $order->price           = $this->room->price;
+//        add request paid
+        $order->paid            = null;
+        $order->payment_type    = $this->room->payment_type;
+        $order->date_start      = date('Y-m-d', strtotime($request->input('date_in')));
+        $order->date_end        = date('Y-m-d', strtotime($request->input('date_out')));
+        $order->status          = self::STATUS_ORDER_ROOM_PENDING;
+        $order->adults          = $request->input('adult');
+        $order->children        = $request->input('children');
+        $order->user_id         = auth()->id();
+
+        if($order->save()){
+            for($i = $request->input("date_in");
+                $i <= $request->input("date_out");
+                $i = date('Y-m-d', strtotime($i. ' + 1 day'))
+            ){
+                $this->room->availabilities()->where('current_date', strtotime($i))->update([
+                        'status'  => self::STATUS_ROOM_BOOKED,
+                    ]
+                );
+            }
+            return redirect()->route('user.order.index')->with('status', 'Order created successfully');
+        }
+        return redirect()->back()->with('error', 'Order does not created successfully');
     }
 
     /**

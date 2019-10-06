@@ -16,7 +16,7 @@
                             <label for="roo_date_in">Check-in:</label>
                             <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" name="date_in" id="roo_date_in" class="form-control date" placeholder="Check-in date" required>
+                                <input type="text" name="date_in" id="roo_date_in" class="form-control date" placeholder="Check-in date" required autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                             <label for="roo_date_out">Check-out:</label>
                             <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" name="date_out" id="roo_date_out" class="form-control date" placeholder="Check-out date" required>
+                                <input type="text" name="date_out" id="roo_date_out" class="form-control date" placeholder="Check-out date" required autocomplete="off">
                             </div>
                         </div>
                     </div>

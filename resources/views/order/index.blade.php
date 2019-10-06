@@ -32,7 +32,10 @@
                                             aria-label="Engine version: activate to sort column ascending">Price / Payment Type
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="CSS grade: activate to sort column ascending">Date
+                                            aria-label="CSS grade: activate to sort column ascending">Date Start
+                                        </th>
+                                        <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
+                                            aria-label="CSS grade: activate to sort column ascending">Date End
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
                                             aria-label="CSS grade: activate to sort column ascending">Created Time
@@ -49,14 +52,40 @@
                                     @if(isset($orders) && $orders->isNotempty())
                                         @foreach($orders as $order)
                                             <tr role="row" class="odd">
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>{{ $order->id }}</td>
+                                                <td>{{ config("settings.objects.$order->order_type.title") }}</td>
+                                                <td>
+                                                    {{ $hotels->where('id', $order->object)->first()->language->title
+                                                    ? $hotels->where('id', $order->object)->first()->language->title : '' }}
+                                                    <br>
+                                                    {{ $rooms->where('id', $order->type)->first()->type->first()->language->title
+                                                    ? $rooms->where('id', $order->type)->first()->type->first()->language->title : '' }}
+                                                </td>
+                                                <td>
+                                                    Price: ${{ $order->price * $order->adults }}
+                                                    <br>
+                                                    Paid: ${{ $order->paid ? $order->paid : 0 }}
+                                                </td>
+                                                <td>{{ date('Y-m-d', strtotime($order->date_start)) }}</td>
+                                                <td>{{ date('Y-m-d', strtotime($order->date_end)) }}</td>
+                                                <td>{{ $order->created_at }}</td>
+                                                {{-- Create Order get status static                      --}}
+                                                <td>{{ config("status.order.room.$order->status.title") }}</td>
+                                                <td>
+                                                    @if($order->status === 1 && $order->status === 2)
+                                                        <div class="btn-group btn-group-sm">
+                                                            <a class="btn btn-danger mr-2" href="{{ route('user.order.destroy', ['id' => $order->id]) }}" title="Cancel"
+                                                               onclick="event.preventDefault()
+                                                                       ;if(confirm('Canceled data cannot be returned?')){document.getElementById('order-cancel{{$order->id}}').submit();}"
+                                                            ><i class="fa fa-trash"></i></a>
+                                                            <form id="order-cancel{{$order->id}}" action="{{ route('user.order.destroy', $order) }}" method="POST"
+                                                                  style="display: none;">
+                                                                @csrf
+                                                                @method('delete')
+                                                            </form>
+                                                        </div>
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -66,7 +95,8 @@
                                         <th rowspan="1" colspan="1">Type</th>
                                         <th rowspan="1" colspan="1">Title</th>
                                         <th rowspan="1" colspan="1">Price / Payment Type</th>
-                                        <th rowspan="1" colspan="1">Date</th>
+                                        <th rowspan="1" colspan="1">Date Start</th>
+                                        <th rowspan="1" colspan="1">Date End</th>
                                         <th rowspan="1" colspan="1">Created Time</th>
                                         <th rowspan="1" colspan="1">Status</th>
                                         <th rowspan="1" colspan="1">Action</th>
@@ -74,7 +104,7 @@
                                     </tfoot>
                                     @else
                                         <tr>
-                                            <th rowspan="1" colspan="8">Order list is empty</th>
+                                            <th rowspan="1" colspan="9">Order list is empty</th>
                                         </tr>
                                         </tfoot>
 

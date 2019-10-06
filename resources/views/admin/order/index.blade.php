@@ -49,16 +49,30 @@
                     @if(isset($orders) && $orders->isNotempty())
                         @foreach($orders as $order)
                             <tr role="row" class="odd">
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->user->name }}</td>
+                                <td>{{ config("settings.objects.$order->order_type.title") }}</td>
+                                <td>
+                                    {{ $hotels->where('id', $order->object)->first()->language->title
+                                        ? $hotels->where('id', $order->object)->first()->language->title : '' }}
+                                    <br>
+                                    {{ $rooms->where('id', $order->type)->first()->type->first()->language->title
+                                    ? $rooms->where('id', $order->type)->first()->type->first()->language->title : '' }}
+                                </td>
+                                <td>
+                                    Price: ${{ $order->price * $order->adults }}
+                                    <br>
+                                    Paid: ${{ $order->paid ? $order->paid : 0 }}
+                                </td>
+                                <td>{{ date('Y-m-d', strtotime($order->date_start)) }}</td>
+                                <td>{{ date('Y-m-d', strtotime($order->date_end)) }}</td>
+                                <td>{{ $order->created_at }}</td>
+                                <td>{{ config("status.order.room.$order->status.title") }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a class="btn btn-success mr-2" href="{{ route('admin.order.edit', $order) }}" title="Edit"><i class="fa fa-edit"></i></a>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
