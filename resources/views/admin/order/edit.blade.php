@@ -9,12 +9,12 @@
                 User
                 <address>
                     <strong>{{ $order->user->name }}</strong> {{ $order->user->last_name ? $order->user->last_name : '' }}<br>
-                    {{ $order->user->detail->address ? $order->user->detail->address : '' }}<br>
-                    {{ $order->user->detail->city ? $order->user->detail->city : '' }}
-                    {{ $order->user->detail->region ? $order->user->detail->region : '' }}
-                    {{ $order->user->detail->country ? $order->user->detail->country : '' }}
-                    {{ $order->user->detail->zip ? $order->user->detail->zip : '' }}<br>
-                    Phone: {{ $order->user->detail->tel ? $order->user->detail->tel : '' }}<br>
+                    {{ $order->user->detail && $order->user->detail->address ? $order->user->detail->address : '' }}<br>
+                    {{ $order->user->detail && $order->user->detail->city ? $order->user->detail->city : '' }}
+                    {{ $order->user->detail && $order->user->detail->region ? $order->user->detail->region : '' }}
+                    {{ $order->user->detail && $order->user->detail->country ? $order->user->detail->country : '' }}
+                    {{ $order->user->detail && $order->user->detail->zip ? $order->user->detail->zip : '' }}<br>
+                    Phone: {{ $order->user->detail && $order->user->detail->tel ? $order->user->detail->tel : '' }}<br>
                     Email: {{ $order->user->email ? $order->user->email : '' }}
                 </address>
             </div>
@@ -88,7 +88,7 @@
                             <td>${{ $order->price * $order->adults}}</td>
                         </tr>
                         <tr>
-                            <th>Paid</th>
+                            <th>Deposit:</th>
                             <td>${{ $order->paid ? $order->paid : 0 }}</td>
                         </tr>
                         <tr>
