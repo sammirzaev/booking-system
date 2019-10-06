@@ -72,7 +72,7 @@
                                                 {{-- Create Order get status static                      --}}
                                                 <td>{{ config("status.order.room.$order->status.title") }}</td>
                                                 <td>
-                                                    @if($order->status === 1 && $order->status === 2)
+                                                    @if($order->status === 1 || $order->status === 2)
                                                         <div class="btn-group btn-group-sm">
                                                             <a class="btn btn-danger mr-2" href="{{ route('user.order.destroy', ['id' => $order->id]) }}" title="Cancel"
                                                                onclick="event.preventDefault()
