@@ -20,8 +20,8 @@ class CreateOrdersTable extends Migration
             $table->integer('price');
             $table->integer('paid');
             $table->integer('payment_type');
-            $table->timestamp('date_start');
-            $table->timestamp('date_end');
+            $table->timestamp('date_start')->nullable();
+            $table->timestamp('date_end')->nullable();
             $table->integer('status')->nullable();
             $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
