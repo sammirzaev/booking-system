@@ -3044,3 +3044,8 @@
   clip: auto;
 }
 
+.required:after{
+  content:" *";
+  color:red;
+}
+

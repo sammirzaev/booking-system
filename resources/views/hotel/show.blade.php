@@ -311,8 +311,9 @@
     <script type="text/javascript">
         $(function() {
             var room_id;
+            var data;
             $('#room_search').submit(function(e){
-                let data = $(this).serialize();
+                data = $(this).serialize();
                 // console.log(data);
                 e.preventDefault();
 
@@ -328,7 +329,7 @@
                     if(res.status){
                         $("#modal-status").attr('class', 'show');
                         $("#modal-error").attr('class', 'hide');
-                        $("#model-checkout").attr('href', '/hotel-check-out/' + room_id);
+                        $("#model-checkout").attr('href', '/hotel-check-out?' + data);
                     }
                     else if(res.error){
                         $("#modal-status").attr('class', 'hide');
