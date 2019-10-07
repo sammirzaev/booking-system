@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreateEvent;
 use App\Order;
 use App\Room;
 use App\Hotel;
@@ -117,6 +118,7 @@ class HotelCheckoutController extends FrontendController
                     ]
                 );
             }
+            event(new OrderCreateEvent($order));
             return redirect()->route('user.order.index')->with('status', 'Order created successfully');
         }
         return redirect()->back()->with('error', 'Order does not created successfully');

@@ -110,4 +110,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    /**
+     * Scope a query to only include admin users.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAdmins($query) {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('name', 'admin');
+        })->get();
+    }
 }
