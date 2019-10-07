@@ -118,7 +118,7 @@ class HotelCheckoutController extends FrontendController
                     ]
                 );
             }
-            event(new OrderCreateEvent($order));
+//            event(new OrderCreateEvent($order));
             return redirect()->route('user.order.index')->with('status', 'Order created successfully');
         }
         return redirect()->back()->with('error', 'Order does not created successfully');
