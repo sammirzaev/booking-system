@@ -110,5 +110,33 @@
                 <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
             </div>
         </li>
+        <!-- Language Dropdown Menu -->
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="flag-icon flag-icon-{{ \App::getLocale() }}"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right p-0">
+                @if(\App::getLocale() !== 'en')
+                    <a href="{{ route('setlocale', ['lang' => 'en']) }}" class="dropdown-item active">
+                        <i class="flag-icon flag-icon-en mr-2"></i> English
+                    </a>
+                @endif
+                @if(\App::getLocale() !== 'ru')
+                    <a href="{{ route('setlocale', ['lang' => 'ru']) }}" class="dropdown-item">
+                        <i class="flag-icon flag-icon-ru mr-2"></i> Русский
+                    </a>
+                @endif
+                @if(\App::getLocale() !== 'uz')
+                    <a href="{{ route('setlocale', ['lang' => 'uz']) }}" class="dropdown-item">
+                        <i class="flag-icon flag-icon-uz mr-2"></i> O`zbek
+                    </a>
+                @endif
+                @if(\App::getLocale() !== 'de')
+                    <a href="{{ route('setlocale', ['lang' => 'de']) }}" class="dropdown-item">
+                        <i class="flag-icon flag-icon-de mr-2"></i> German
+                    </a>
+                @endif
+            </div>
+        </li>
     </ul>
 </nav>

@@ -1,4 +1,47 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Nunito);.flag-icon-background {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+.flag-icon {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    display: inline-block;
+    width: 1.33333333em;
+    line-height: 1em;
+}
+.flag-icon:before {
+    content: "\A0";
+}
+.flag-icon.flag-icon-squared {
+    width: 1em;
+}
+.flag-icon-en {
+    background-image: url(/images/en.svg?4f1b7af5c0bae6aae85c3e7ba9401a85);
+}
+.flag-icon-en.flag-icon-squared {
+    background-image: url(/images/en.svg?4f1b7af5c0bae6aae85c3e7ba9401a85);
+}
+.flag-icon-ru {
+    background-image: url(/images/ru.svg?0cacf46e6f473fa88781120f370d6107);
+}
+.flag-icon-ru.flag-icon-squared {
+    background-image: url(/images/ru.svg?0cacf46e6f473fa88781120f370d6107);
+}
+.flag-icon-uz {
+    background-image: url(/images/uz.svg?eb1e00b870d7f0784288d76eb3bfc1d5);
+}
+.flag-icon-uz.flag-icon-squared {
+    background-image: url(/images/uz.svg?eb1e00b870d7f0784288d76eb3bfc1d5);
+}
+.flag-icon-de {
+    background-image: url(/images/de.svg?3e726c2b6a59e6e4543c0a1534d93796);
+}
+.flag-icon-de.flag-icon-squared {
+    background-image: url(/images/de.svg?3e726c2b6a59e6e4543c0a1534d93796);
+}@charset "UTF-8";
 
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
@@ -3042,10 +3085,5 @@
   margin: 0;
   overflow: visible;
   clip: auto;
-}
-
-.required:after{
-  content:" *";
-  color:red;
 }
 

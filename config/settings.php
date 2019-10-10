@@ -2,6 +2,7 @@
 return [
     'locales' => ['en', 'ru', 'uz', 'de'],
     'locale_default' => 'en',
+
     'objects' => [
         1 => [
             'title' => 'Hotel',
