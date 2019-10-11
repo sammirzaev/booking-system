@@ -15,8 +15,8 @@
                     <div class="col-three-forth animate-box">
                         <h2>Orders</h2>
                         <div class="row">
-                            <div class="col-md-12">
-                                <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                            <div class="col-md-12 table-responsive">
+                                <table id="example2" class="table table-bordered table-hover dataTable " role="grid" aria-describedby="example2_info">
                                     <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
