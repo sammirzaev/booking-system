@@ -47,20 +47,33 @@
 
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <ul class="pagination">
-                                <li class="disabled"><a href="#">&laquo;</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
+                    @if($hotels->lastPage() > 1)
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <ul class="pagination">
+                                    @if($hotels->currentPage() !== 1)
+                                        <li>
+                                            <a href="{{ $hotels->url($hotels->currentPage() - 1) }}">&laquo;
+                                            </a>
+                                        </li>
+                                    @endif
+                                    @for($i = 1; $i <= $hotels->lastPage(); $i++)
+                                        @if($hotels->currentPage() == $i)
+                                            <li class="active "><a class="disabled">{{ $i }}</a></li>
+                                        @else
+                                            <li><a href="{{ $hotels->url($i) }}">{{ $i }}</a></li>
+                                        @endif
+                                    @endfor
+                                    @if($hotels->currentPage() !== $hotels->lastPage())
+                                        <li>
+                                            <a href="{{ $hotels->url($hotels->currentPage() + 1) }}">&raquo;
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-
+                    @endif
                 </div>
 
                 <!-- SIDEBAR-->

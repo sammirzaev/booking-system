@@ -1,6 +1,7 @@
 <?php
 return [
     'user' => [
-        'all_hotels' => 8,
+        'hotels' => 8,
+        'orders' => 20
     ],
 ];

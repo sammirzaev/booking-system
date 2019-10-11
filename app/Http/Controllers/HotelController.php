@@ -45,9 +45,11 @@ class HotelController extends FrontendController
      */
     public function index()
     {
+        $hotels = $this->hotel::active()->paginate(config('paginate.user.hotels'));
+        $hotels->load('language', 'image', 'bonuses');
+
         return view('hotel.index')
-            ->with('hotels', $this->hotel->active()->paginate(config('paginate.user.all_hotels'))
-                ->load('language', 'image', 'bonuses'))
+            ->with('hotels', $hotels)
             ->with('locations', $this->location->all()->load('language'));
     }
 

@@ -112,6 +112,33 @@
                                 </table>
                             </div>
                         </div>
+                        @if($orders->lastPage() > 1)
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <ul class="pagination">
+                                        @if($orders->currentPage() !== 1)
+                                            <li>
+                                                <a href="{{ $orders->url($orders->currentPage() - 1) }}">&laquo;
+                                                </a>
+                                            </li>
+                                        @endif
+                                        @for($i = 1; $i <= $orders->lastPage(); $i++)
+                                            @if($orders->currentPage() == $i)
+                                                <li class="active "><a class="disabled">{{ $i }}</a></li>
+                                            @else
+                                                <li><a href="{{ $orders->url($i) }}">{{ $i }}</a></li>
+                                            @endif
+                                        @endfor
+                                        @if($orders->currentPage() !== $orders->lastPage())
+                                            <li>
+                                                <a href="{{ $orders->url($orders->currentPage() + 1) }}">&raquo;
+                                                </a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

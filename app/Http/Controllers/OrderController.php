@@ -46,8 +46,11 @@ class OrderController extends FrontendController
      */
     public function index()
     {
+        $orders = $this->order::where('user_id', auth()->id())->orderByDesc('id')
+                    ->paginate(config('paginate.user.orders'));
+
         return view('order.index')
-            ->with('orders', $this->order::where('user_id', auth()->id())->orderByDesc('id')->get())
+            ->with('orders', $orders)
             ->with('rooms', $this->room->all()->load('type'))
             ->with('hotels', $this->hotel->all()->load('language'));
     }
