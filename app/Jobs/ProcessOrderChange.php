@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\User;
 use App\Order;
-use App\Mail\OrderCreate;
+use App\Mail\OrderChange;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\SerializesModels;
@@ -12,7 +12,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class ProcessOrder implements ShouldQueue
+class ProcessOrderChange implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -47,11 +47,11 @@ class ProcessOrder implements ShouldQueue
     public function handle()
     {
         Mail::to($this->order->user->email)
-            ->send(new OrderCreate($this->order));
+            ->send(new OrderChange($this->order));
 
         foreach (User::admins() as $admin){
             Mail::to($admin->email)
-                ->send(new OrderCreate($this->order));
+                ->send(new OrderChange($this->order));
         }
     }
 }

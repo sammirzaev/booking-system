@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Events\OrderChangeEvent;
 use App\Hotel;
 use App\Order;
 use App\Room;
@@ -50,8 +51,10 @@ class OrderController extends AdminController
      */
     public function index()
     {
+        $orders = $this->order::orderByDesc('id')->paginate($this->getPaginate());
+
         return $this->view
-            ->with('orders', $this->order::orderByDesc('id')->get())
+            ->with('orders', $orders)
             ->with('rooms', $this->room->all()->load('type'))
             ->with('hotels', $this->hotel->all()->load('language'));
     }
@@ -135,6 +138,8 @@ class OrderController extends AdminController
                     }
                 }
             }
+            event(new OrderChangeEvent($order));
+
             return redirect()->route('admin.order.index')->with('status', 'Order changed successfully');
         }
         return redirect()->back()->with('error', 'Order changed error');

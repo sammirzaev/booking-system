@@ -6,6 +6,7 @@ use App\Hotel;
 use App\Order;
 use App\Room;
 use Illuminate\Http\Request;
+use App\Events\OrderChangeEvent;
 
 class OrderController extends FrontendController
 {
@@ -136,6 +137,7 @@ class OrderController extends FrontendController
                     }
                 }
             }
+            event(new OrderChangeEvent($order));
 
             return redirect()->route('user.order.index')->with('status', 'Order canceled successfully');
         }

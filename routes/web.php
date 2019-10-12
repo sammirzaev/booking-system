@@ -71,4 +71,9 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
         Route::resource('/room-facility', 'RoomFacilityController')->names('room.facility');
     });
 
+    Route::get('paginate/{name}/{value}', function ($name, $value) {
+        Cookie::queue($name, $value);
+        return response()->redirectTo(Redirect::back()->getTargetUrl());
+    })->name('paginate');
+
 });

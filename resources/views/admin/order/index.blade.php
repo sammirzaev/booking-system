@@ -100,40 +100,70 @@
                 </table>
             </div>
         </div>
-{{--        <div class="row">--}}
-{{--            <div class="col-sm-12 col-md-5">--}}
-{{--                <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>--}}
-{{--            </div>--}}
-{{--            <div class="col-sm-12 col-md-7">--}}
-{{--                <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">--}}
-{{--                    <ul class="pagination">--}}
-{{--                        <li class="paginate_button page-item previous disabled" id="example2_previous">--}}
-{{--                            <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="paginate_button page-item active">--}}
-{{--                            <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">1</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="paginate_button page-item ">--}}
-{{--                            <a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0" class="page-link">2</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="paginate_button page-item ">--}}
-{{--                            <a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0" class="page-link">3</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="paginate_button page-item ">--}}
-{{--                            <a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0" class="page-link">4</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="paginate_button page-item ">--}}
-{{--                            <a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0" class="page-link">5</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="paginate_button page-item ">--}}
-{{--                            <a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0" class="page-link">6</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="paginate_button page-item next" id="example2_next">--}}
-{{--                            <a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link">Next</a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+        <div class="row">
+            <div class="col-sm-12 col-md-5">
+                <div class="dataTables_info" id="example1_length" role="status" aria-live="polite">
+                    <label>Show
+                    <select name="example1_length" aria-controls="example1" class="custom-select custom-select-sm form-control form-control-sm"
+                            onchange="if (this.value) window.location.href=this.value">
+                        <option value="{{ route('paginate', ['name' => 'admin.order.index', 'value' => 10]) }}"
+                                @if(\Request::cookie('admin.order.index') === 10) selected @endif>
+                           10
+                        </option>
+                        <option value="{{ route('paginate', ['name' => 'admin.order.index', 'value' => 25]) }}"
+                                @if(\Request::cookie('admin.order.index') === 25) selected @endif>
+                            25
+                        </option>
+                        <option value="{{ route('paginate', ['name' => 'admin.order.index', 'value' => 50]) }}"
+                                @if(\Request::cookie('admin.order.index') === 50) selected @endif>
+                            50
+                        </option>
+                        <option value="{{ route('paginate', ['name' => 'admin.order.index', 'value' => 100]) }}"
+                                @if(\Request::cookie('admin.order.index') === 100) selected @endif>
+                            100
+                        </option>
+                    </select>
+                        entries</label>
+                </div>
+            </div>
+
+            @if($orders->lastPage() > 1)
+                <div class="col-sm-12 col-md-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                        <ul class="pagination">
+                            @if($orders->currentPage() !== 1)
+                                <li class="paginate_button page-item previous">
+                                    <a aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link"
+                                       href="{{ $orders->url($orders->currentPage() - 1) }}">&laquo;
+                                    </a>
+                                </li>
+                            @endif
+                            @for($i = 1; $i <= $orders->lastPage(); $i++)
+                                @if($orders->currentPage() == $i)
+                                    <li class="paginate_button page-item active">
+                                        <a aria-controls="example2" data-dt-idx="{{ $i }}" tabindex="0" class="page-link"
+                                             class="disabled">{{ $i }}
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="paginate_button page-item">
+                                        <a aria-controls="example2" data-dt-idx="{{ $i }}" tabindex="0" class="page-link"
+                                           href="{{ $orders->url($i) }}">{{ $i }}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endfor
+                            @if($orders->currentPage() !== $orders->lastPage())
+                                <li class="paginate_button page-item next" id="example2_next">
+                                    <a  aria-controls="example2" data-dt-idx="7" tabindex="0" class="page-link"
+                                        href="{{ $orders->url($orders->currentPage() + 1) }}">&raquo;
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+            @endif
+        </div>
     </div>
 @endsection

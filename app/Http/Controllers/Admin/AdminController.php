@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Traits\Paginate;
 use Prologue\Alerts\Facades\Alert;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
+    use Paginate;
+    
     /**
      * Project | Title
      * @var string
