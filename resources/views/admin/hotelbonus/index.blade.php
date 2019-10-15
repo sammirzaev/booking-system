@@ -61,7 +61,6 @@
                         <th rowspan="1" colspan="1">ID</th>
                         <th rowspan="1" colspan="1">Icon</th>
                         <th rowspan="1" colspan="1">Title</th>
-                        <th rowspan="1" colspan="1">Sort</th>
                         <th rowspan="1" colspan="1">Action</th>
                     </tr>
                     </tfoot>
