@@ -138,7 +138,7 @@ class OrderController extends AdminController
                     }
                 }
             }
-            event(new OrderChangeEvent($order));
+//            event(new OrderChangeEvent($order));
 
             return redirect()->route('admin.order.index')->with('status', 'Order changed successfully');
         }

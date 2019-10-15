@@ -11,7 +11,7 @@
             <a href="{{ route('logout') }}" class="nav-link"
                onclick="event.preventDefault();
                    document.getElementById('logout-form').submit();">
-                Sign out
+                Logout
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
@@ -133,7 +133,7 @@
                 @endif
                 @if(\App::getLocale() !== 'de')
                     <a href="{{ route('setlocale', ['lang' => 'de']) }}" class="dropdown-item">
-                        <i class="flag-icon flag-icon-de mr-2"></i> Dutch
+                        <i class="flag-icon flag-icon-de mr-2"></i> Deutsch
                     </a>
                 @endif
             </div>

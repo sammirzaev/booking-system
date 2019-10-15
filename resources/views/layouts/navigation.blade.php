@@ -36,7 +36,7 @@
                                 @if(\App::getLocale() !== 'de')
                                     <li>
                                         <a href="{{ route('setlocale', ['lang' => 'de']) }}" class="dropdown-item">
-                                            <i class="flag-icon flag-icon-de mr-2"></i> Dutch
+                                            <i class="flag-icon flag-icon-de mr-2"></i> Deutsch
                                         </a>
                                     </li>
                                 @endif

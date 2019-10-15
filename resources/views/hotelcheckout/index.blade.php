@@ -61,6 +61,25 @@
                             </div>
 
                             <div class="row form-group">
+                                <div class="col-md-6">
+                                    <label for="password" class="required">{{ __('Password') }}</label>
+                                    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror"
+                                           placeholder="{{ __('Password') }}" required>
+                                    @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="password_confirmation" class="required">{{ __('Confirm Password') }}</label>
+                                    <input type="password" name="password_confirmation" id="password_confirmation"
+                                           class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="{{ __('Confirm Password') }}" required>
+                                    @error('password_confirmation')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
                                 <div class="col-md-8">
                                     <label for="address">Address</label>
                                     <input type="text" name="address" id="address" class="form-control @error('address') is-invalid @enderror"

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\OrderCreateEvent;
 use App\Order;
 use App\Room;
 use App\Hotel;
 use App\User;
 use Illuminate\Http\Request;
+use App\Events\OrderCreateEvent;
 use App\Http\Requests\HotelCheckoutRequest;
 
 class HotelCheckoutController extends FrontendController
@@ -70,13 +70,12 @@ class HotelCheckoutController extends FrontendController
     public function store(HotelCheckoutRequest $request)
     {
         if (!auth()->id()){
-            $newPassword = bcrypt(\Str::random(10));
 
             $user = new User();
             $user->name         = $request->input('first_name');
             $user->last_name    = $request->input('last_name');
             $user->email        = $request->input('email');
-            $user->password     = $newPassword;
+            $user->password     = \Hash::make($request->input('password'));
 
             if ($user->save())
                 $user->detail()->create([
@@ -118,7 +117,7 @@ class HotelCheckoutController extends FrontendController
                     ]
                 );
             }
-            event(new OrderCreateEvent($order));
+//            event(new OrderCreateEvent($order));
             return redirect()->route('user.order.index')->with('status', 'Order created successfully');
         }
         return redirect()->back()->with('error', 'Order does not created successfully');

@@ -32,6 +32,9 @@ class HotelCheckoutRequest extends FormRequest
         $validator->sometimes('email', 'required|string|email|max:255|unique:users', function ($input) {
             return !(auth()->id()) ?? $input->email;
         });
+        $validator->sometimes('password', 'required|string|min:8|confirmed', function ($input) {
+            return !(auth()->id()) ?? $input->password;
+        });
         $validator->sometimes('telephone', 'required|string|max:15', function ($input) {
             return !(auth()->id()) ?? $input->telephone;
         });
@@ -46,10 +49,6 @@ class HotelCheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-//            'first_name'    => 'sometimes:'.auth()->id().'|required|string|max:255',
-//            'last_name'     => 'sometimes:'.auth()->id().'|required|string|max:255',
-//            'email'         => 'sometimes:'.auth()->id().'|required|string|email|max:255|unique:users',
-//            'telephone'     => 'sometimes:'.auth()->id().'|required|string|max:15',
             'address'       => 'string|max:255|nullable',
             'postcode'      => 'string|max:50|nullable',
             'city'          => 'string|max:50|nullable',

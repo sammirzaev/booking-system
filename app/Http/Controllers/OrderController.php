@@ -137,7 +137,7 @@ class OrderController extends FrontendController
                     }
                 }
             }
-            event(new OrderChangeEvent($order));
+//            event(new OrderChangeEvent($order));
 
             return redirect()->route('user.order.index')->with('status', 'Order canceled successfully');
         }
