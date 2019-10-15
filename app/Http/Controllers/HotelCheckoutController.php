@@ -81,10 +81,10 @@ class HotelCheckoutController extends FrontendController
                 $user->detail()->create([
                     'tel'       => $request->input('telephone'),
                     'country'   => $request->input('country'),
-                    'region'    => $request->input('region'),
+                    'region'    => $request->input('region_state'),
                     'city'      => $request->input('city'),
                     'address'   => $request->input('address'),
-                    'zip'       => $request->input('zip'),
+                    'zip'       => $request->input('postcode'),
                     'user_id'   => $user->id
             ]);
             auth()->login($user);

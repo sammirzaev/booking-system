@@ -6,6 +6,7 @@ return [
     ],
 
     'admin' => [
-        'order' => ['index' => 5]
+        'order' => ['index' => 10],
+        'user' => ['index' => 20],
     ],
 ];

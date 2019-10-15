@@ -69,6 +69,8 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
         Route::resource('/room-type', 'RoomTypeController')->names('room.type');
         Route::resource('/room-bonus', 'RoomBonusController')->names('room.bonus');
         Route::resource('/room-facility', 'RoomFacilityController')->names('room.facility');
+
+        Route::resource('/user', 'UserController')->names('user');
     });
 
     Route::get('paginate/{name}/{value}', function ($name, $value) {

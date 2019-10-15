@@ -7,16 +7,16 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('admin.index') }}" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('logout') }}" class="nav-link"
-               onclick="event.preventDefault();
-                   document.getElementById('logout-form').submit();">
-                Logout
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </li>
+{{--        <li class="nav-item d-none d-sm-inline-block">--}}
+{{--            <a href="{{ route('logout') }}" class="nav-link"--}}
+{{--               onclick="event.preventDefault();--}}
+{{--                   document.getElementById('logout-form').submit();">--}}
+{{--                Logout--}}
+{{--            </a>--}}
+{{--            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+{{--                @csrf--}}
+{{--            </form>--}}
+{{--        </li>--}}
     </ul>
 
     <!-- Right navbar links -->
@@ -137,6 +137,16 @@
                     </a>
                 @endif
             </div>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('logout') }}" class="nav-link"
+               onclick="event.preventDefault();if(confirm('Are you sure you want to Logout??')){
+                   document.getElementById('logout-form').submit();}">
+                <i class="nav-icon fas fa-sign-out-alt" title="Logout"></i>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
         </li>
     </ul>
 </nav>
