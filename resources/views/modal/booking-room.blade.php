@@ -62,7 +62,9 @@
                     </a>
                 </div>
             </div>
-            <div class="hide" id="modal-error">
+            <div class="danger alert-danger">
+                <div class="hide" id="modal-error">
+                </div>
             </div>
         </div>
     </div>
