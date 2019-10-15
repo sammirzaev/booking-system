@@ -7,16 +7,16 @@ return [
     |
     */
 
-    'first_title_h1' => '2 daagse tour',
-    'first_title_h2' => 'Geweldige Oezbekistan-tour',
+    'first_title_h1' => '2 - tagige Reise',
+    'first_title_h2' => 'ERSTAUNLICHE TOUREN VON USBEKISTAN',
 
-    'second_title_h1' => '10-daagse reizen',
-    'second_title_h2' => 'Van Oezbekistan tot Karakalpakistan',
+    'second_title_h1' => '10-tagige Reisen',
+    'second_title_h2' => 'Von Usbekistan bis zum Karakalpakistan',
 
-    'third_title_h1' => 'Ontdek ons meest reisbureau',
-    'third_title_h2' => 'Onze hotels',
+    'third_title_h1' => 'Erforschen Sie unsere den grossten Teil der reise Agentur',
+    'third_title_h2' => 'Unsere Hotel',
 
-    'fourth_title_h1' => 'Ervaar het',
-    'fourth_title_h2' => 'Beste uitstapje ooit',
+    'fourth_title_h1' => 'Erfahrungen',
+    'fourth_title_h2' => 'BESTE REISEN JEMALS',
 
 ];

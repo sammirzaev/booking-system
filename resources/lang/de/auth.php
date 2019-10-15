@@ -11,9 +11,11 @@ return [
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
+	| "fehlgeschlagen" -> "Ihre Zugangsdaten stimmen nicht mit unseren Datensaetzen ueberein"
+	| "Versuche" -> "Zu viele Eintrittsversuche!Versuchen Sie es spaeter: in sekunde seconds"
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'Die Eingaben von Ihnen stimmen nicht mit unseren Aufzeichnungen in Datenbanken ueberein .',
+    'throttle' => 'Zu viele Anmeldungsversuche. Versuchen Sie bitte darin noch einmal :seconds seconds.',
 
 ];

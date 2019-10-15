@@ -21,7 +21,7 @@
                     <label for="date_in">Check-in:</label>
                     <div class="form-field">
                         <i class="icon icon-calendar2"></i>
-                        <input type="text" name="date_in" id="date_in" class="form-control date" placeholder="Check-in date">
+                        <input type="text" name="date_in" id="date_in" class="form-control date" placeholder="Check-in date" autocomplete="off">
                     </div>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <label for="date_out">Check-out:</label>
                     <div class="form-field">
                         <i class="icon icon-calendar2"></i>
-                        <input type="text" name="date_out" id="date_out" class="form-control date" placeholder="Check-out date">
+                        <input type="text" name="date_out" id="date_out" class="form-control date" placeholder="Check-out date" autocomplete="off">
                     </div>
                 </div>
             </div>
