@@ -11,7 +11,6 @@
 |
 */
 
-Auth::routes();
 
 Route::get('change-language/{lang}', function ($lang) {
 
@@ -33,6 +32,7 @@ Route::get('change-language/{lang}', function ($lang) {
 })->name('setlocale');
 
 Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
+    Auth::routes();
 
     Route::get('/', 'IndexController@index')->name('index');
     Route::resource('/hotel', 'HotelController')->names('hotel');
