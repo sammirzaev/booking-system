@@ -34,6 +34,8 @@
         "jquery.stellar": "0.6.2",
         "magnific-popup": "0.9.9",
         "owl.carousel": "^2.3.4",
+        "sweetalert2": "^8.18.3",
+        "toastr": "^2.1.4",
         "waypoints": "4.0.0"
     }
 }

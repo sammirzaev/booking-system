@@ -6,6 +6,7 @@ use App\Order;
 use App\Role;
 use App\User;
 use App\Http\Requests\UserRequest;
+use Prologue\Alerts\Facades\Alert;
 
 class UserController extends AdminController
 {
@@ -41,12 +42,20 @@ class UserController extends AdminController
      */
     public function index()
     {
+//        \Alert::info('This is a blue bubble.');
+//        \Alert::warning('This is a yellow/orange bubble.');
+//        \Alert::error('This is a red bubble.');
+//        \Alert::success('This is a green bubble.');
+//        \Alert::success('<strong>Got it</strong><br>This is an HTML message.');
+
         $users = $this->user::orderByDesc('id')->paginate($this->getPaginate());
         $users->load('detail');
 
         return $this->view
             ->with('users', $users)
-            ->with('roles', $this->role->all());
+            ->with('roles', $this->role->all())
+            ->with('error', 'Error flash test')
+            ;
     }
 
     /**

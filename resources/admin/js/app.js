@@ -7,6 +7,8 @@
 require('./bootstrap');
 
 /** Admin LTE */
+// require('admin-lte/plugins/sweetalert2/sweetalert2.all.min');
+require('sweetalert2');
 require('admin-lte');
 
 window.Vue = require('vue');

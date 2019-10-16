@@ -81,8 +81,8 @@ class AdminController extends Controller
         if(session('error')){
             Alert::error(session('error'))->flash();
         }
-        elseif(session('success')){
-            Alert::success(session('success'))->flash();
+        elseif(session('status')){
+            Alert::success(session('status'))->flash();
         }
         elseif(session('info')){
             Alert::error(session('info'))->flash();
