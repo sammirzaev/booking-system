@@ -7,9 +7,9 @@ return [
     |
     */
 
-    'title' => 'Yangilikka a\'zo bo\'ling',
-    'text' => 'So\'nggi yangiliklarni va takliflarni olish uchun pochta ro\'yxatiga a\'zo bo\'ling.',
-    'placeholder' => 'E-pochtangizni kiriting',
-    'button' => 'Obuna bo\'ling',
+    'title' => 'Beste Neigkeiten hier, bitte melden Sie sich an',
+    'text' => 'Um die letzten Neuigkeiten zu bekommen, fuehren Sie bitte hier die Registration ein!',
+    'placeholder' => 'E-mail-addresse bitte eingeben',
+    'button' => 'Bitte sich anmelden',
 
 ];
