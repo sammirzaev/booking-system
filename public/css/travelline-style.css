@@ -1,0 +1,21 @@
+.side.search-wrap {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.booking-title {
+    text-align: center;
+}
+
+.booking-title h2 {
+    font-size: 48px;
+    padding: 150px 0 85px 0;
+    font-weight: 100;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}

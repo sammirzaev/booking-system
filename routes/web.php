@@ -41,6 +41,8 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
 
     Route::resource('/room-search', 'RoomSearchController')->only('index')->names('room.search');
 
+    Route::resource('/booking', 'BookingController')->only('index')->names('booking');
+
     /**
      * User routes
      */
