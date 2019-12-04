@@ -8,6 +8,9 @@
 //@import '~bootstrap/scss/bootstrap';
 
 // Admin LTE
+$fa-font-path: "../fonts/" !default;
+@import '~font-awesome/scss/font-awesome';
+
 @import '~admin-lte/plugins/fontawesome-free/css/all.min.css';
 @import '~admin-lte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css';
 @import '~admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css';

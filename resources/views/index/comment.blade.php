@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                <h2>Our Satisfied Guests says</h2>
-                <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <h2>{{__('index/comment.title')}}</h2>
+                <p>{{__('index/comment.text')}}</p>
             </div>
         </div>
         <div class="row">

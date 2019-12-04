@@ -16,9 +16,9 @@
                             </div>
                         </div>
                         <div class="text-rights">
-                            <h3 class="title">Just hurry up limited offer!</h3>
-                            <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <p><a href="#" class="btn btn-primary">Book Now</a> <a href="#" class="btn btn-primary btn-outline">Read more</a></p>
+                            <h3 class="title">{{__('index/sale.title')}}</h3>
+                            <p>{{__('index/sale.text')}}</p>
+                            <p><a href="#" class="btn btn-primary">{{__('index/sale.button_order')}}</a> <a href="#" class="btn btn-primary btn-outline">{{__('index/sale.button_reade')}}</a></p>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
             <div class="col-md-6 animate-box">
                 <div class="video-wrap">
                     <div class="video colorlib-video" style="background-image: url({{ asset('img/img_bg_2.jpg') }});">
-                        <a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-video"></i></a>
+                        <a href="#" class="popup-vimeo"><i class="icon-video"></i></a>
                         <div class="video-overlay"></div>
                     </div>
                 </div>

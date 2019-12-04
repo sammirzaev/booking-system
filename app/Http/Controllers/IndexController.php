@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Hotel;
 use App\Location;
 
 class IndexController extends FrontendController
@@ -12,12 +13,19 @@ class IndexController extends FrontendController
     protected $location;
 
     /**
-     * LocationController constructor.
-     * @param Location $location
+     * @var Hotel
      */
-    public function __construct(Location $location)
+    private $hotel;
+
+    /**
+     * IndexController constructor.
+     * @param Location $location
+     * @param Hotel $hotel
+     */
+    public function __construct(Location $location, Hotel $hotel)
     {
         $this->location = $location;
+        $this->hotel = $hotel;
     }
 
     /**
@@ -27,6 +35,11 @@ class IndexController extends FrontendController
      */
     public function index()
     {
-        return view('index.index')->with('locations', $this->location->all()->load('language'));
+        $hotels = $this->hotel::active()->paginate(config('paginate.user.hotels'));
+        $hotels->load('language', 'image', 'bonuses');
+
+        return view('index.index')
+            ->with('locations', $this->location->all()->load('language'))
+            ->with('hotels', $hotels);
     }
 }

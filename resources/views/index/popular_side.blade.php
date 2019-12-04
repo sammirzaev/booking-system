@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                <h2>Most Popular Travel Regions</h2>
-                <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <h2>{{ __('index/popular_side.title') }}</h2>
+                <p>{{ __('index/popular_side.text') }}</p>
             </div>
         </div>
         <div class="row">
@@ -13,34 +13,34 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-6 animate-box">
-                                    <a  href="tours.html" class="f-tour-img" style="background-image: url({{ asset('img/tour-1.jpg') }});">
+                                    <a  href="#" class="f-tour-img" style="background-image: url({{ asset('img/tour-4.jpg') }});">
                                         <div class="desc">
-                                            <h3>Samarkand - 5 Days</h3>
-                                            <p class="price"><span>$120</span> <small>/ person</small></p>
+                                            <h3>Samarkand</h3>
+                                            <p class="price"><span>{{ __('index/popular_side.best') }}</span> <small>/ {{ __('index/popular_side.price') }}</small></p>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-md-6 animate-box">
-                                    <a  href="tours.html" class="f-tour-img" style="background-image: url({{ asset('img/tour-2.jpg') }});">
+                                    <a  href="#" class="f-tour-img" style="background-image: url({{ asset('img/tour-3.jpg') }});">
                                         <div class="desc">
-                                            <h3>Bukhara - 5 Days</h3>
-                                            <p class="price"><span>$120</span> <small>/ person</small></p>
+                                            <h3>Bukhara</h3>
+                                            <p class="price"><span>{{ __('index/popular_side.best') }}</span> <small>/ {{ __('index/popular_side.price') }}</small></p>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-md-6 animate-box">
-                                    <a  href="tours.html" class="f-tour-img" style="background-image: url({{ asset('img/tour-3.jpg') }});">
+                                    <a  href="#" class="f-tour-img" style="background-image: url({{ asset('img/tour-2.jpg') }});">
                                         <div class="desc">
-                                            <h3>Khiva - 5 Days</h3>
-                                            <p class="price"><span>$120</span> <small>/ person</small></p>
+                                            <h3>Khiva</h3>
+                                            <p class="price"><span>{{ __('index/popular_side.best') }}</span> <small>/ {{ __('index/popular_side.price') }}</small></p>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-md-6 animate-box">
-                                    <a  href="tours.html" class="f-tour-img" style="background-image: url({{ asset('img/tour-4.jpg') }});">
+                                    <a  href="#" class="f-tour-img" style="background-image: url({{ asset('img/tour-1.jpg') }});">
                                         <div class="desc">
-                                            <h3>Tashkent - 5 Days</h3>
-                                            <p class="price"><span>$120</span> <small>/ person</small></p>
+                                            <h3>Tashkent</h3>
+                                            <p class="price"><span>{{ __('index/popular_side.best') }}</span> <small>/ {{ __('index/popular_side.price') }}</small></p>
                                         </div>
                                     </a>
                                 </div>
@@ -51,10 +51,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3>Tashkent</h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p><br>
+                                        <p>{{ __('index/popular_side.first_desc') }}</p><br>
                                     </div>
                                     <div class="col-md-12">
-                                        <h4>Best Tours City</h4>
+                                        <h4>{{ __('index/popular_side.list_title') }}</h4>
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4 col-xs-4">
                                                 <ul>
@@ -81,7 +81,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <p><a href="tours.html" class="btn btn-primary">View All Places</a></p>
+                                        <p><a href="#" class="btn btn-primary">{{ __('index/popular_side.button_view') }}</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -94,34 +94,34 @@
                         <div class="col-md-6 col-md-push-6">
                             <div class="row">
                                 <div class="col-md-6 animate-box">
-                                    <a  href="tours.html" class="f-tour-img" style="background-image: url({{ asset('img/tour-5.jpg') }});">
+                                    <a  href="#" class="f-tour-img" style="background-image: url({{ asset('img/tour-5.jpg') }});">
                                         <div class="desc">
-                                            <h3>Shahrisabz - 5 Days</h3>
-                                            <p class="price"><span>$120</span> <small>/ person</small></p>
+                                            <h3>Shahrisabz</h3>
+                                            <p class="price"><span>{{ __('index/popular_side.best') }}</span> <small>/ {{ __('index/popular_side.price') }}</small></p>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-md-6 animate-box">
-                                    <a  href="tours.html" class="f-tour-img" style="background-image: url({{ asset('img/tour-6.jpg') }});">
+                                    <a  href="#" class="f-tour-img" style="background-image: url({{ asset('img/tour-6.jpg') }});">
                                         <div class="desc">
-                                            <h3>Fergana Valley - 5 Days</h3>
-                                            <p class="price"><span>$120</span> <small>/ person</small></p>
+                                            <h3>Aral Sea Muynak</h3>
+                                            <p class="price"><span>{{ __('index/popular_side.best') }}</span> <small>/ {{ __('index/popular_side.price') }}</small></p>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-md-6 animate-box">
-                                    <a  href="tours.html" class="f-tour-img" style="background-image: url({{ asset('img/tour-7.jpg') }});">
+                                    <a  href="#" class="f-tour-img" style="background-image: url({{ asset('img/tour-7.jpg') }});">
                                         <div class="desc">
-                                            <h3>Margilan - 5 Days</h3>
-                                            <p class="price"><span>$120</span> <small>/ person</small></p>
+                                            <h3>Margilan</h3>
+                                            <p class="price"><span>{{ __('index/popular_side.best') }}</span> <small>/ {{ __('index/popular_side.price') }}</small></p>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-md-6 animate-box">
-                                    <a  href="tours.html" class="f-tour-img" style="background-image: url({{ asset('img/tour-8.jpg') }});">
+                                    <a  href="#" class="f-tour-img" style="background-image: url({{ asset('img/tour-8.jpg') }});">
                                         <div class="desc">
-                                            <h3>Termez - 5 Days</h3>
-                                            <p class="price"><span>$120</span> <small>/ person</small></p>
+                                            <h3>Djizak Aidarkul</h3>
+                                            <p class="price"><span>{{ __('index/popular_side.best') }}</span> <small>/ {{ __('index/popular_side.price') }}</small></p>
                                         </div>
                                     </a>
                                 </div>
@@ -132,10 +132,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h3>Samarkand</h3>
-                                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p><br>
+                                        <p>{{ __('index/popular_side.second_desc') }}</p><br>
                                     </div>
                                     <div class="col-md-12">
-                                        <h4>Best Tours City</h4>
+                                        <h4>{{ __('index/popular_side.list_title') }}</h4>
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4 col-xs-4">
                                                 <ul>
@@ -162,7 +162,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <p><a href="tours.html" class="btn btn-primary">View All Places</a></p>
+                                        <p><a href="#" class="btn btn-primary">{{ __('index/popular_side.button_view') }}</a></p>
                                     </div>
                                 </div>
                             </div>
