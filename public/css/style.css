@@ -7,7 +7,7 @@
 
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *
 * ======================================================= */
 body {
@@ -1897,3 +1897,8 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+
+.required:after{
+    content:" *";
+    color:red;
+}
