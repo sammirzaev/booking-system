@@ -28,6 +28,18 @@ return [
 
     'guest_label' => 'Mehmon',
 
-    'hotel_submit' => 'Mehmonxona Topish'
+    'hotel_submit' => 'Mehmonxona Topish',
 
+
+    'find_car_title' => 'O\'zingizning avtongizni toping',
+    'start_date' => 'Boshlanish vaqti',
+    'start_time' => 'Boshlanish vaqti',
+    'end_date' => 'Tugash sanasi',
+    'end_time' => 'Tugash vaqti',
+    'adults' => 'Kattalar',
+    'driver' => 'Haydovchi',
+    'driver_default' => 'Haydovchi bilan',
+    'car_submit' => 'Avtomobil toping',
+
+    'available_submit' => 'Mavjudligini tekshiring',
 ];

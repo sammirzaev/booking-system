@@ -31,6 +31,10 @@ return [
         'user' => [
             'max_booking_range_day' => 180
         ]
-
     ],
+    'car' => [
+        'user' => [
+            'max_booking_range_day' => 180
+        ]
+    ]
 ];

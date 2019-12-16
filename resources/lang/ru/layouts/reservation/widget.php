@@ -28,6 +28,18 @@ return [
 
     'guest_label' => 'Гость',
 
-    'hotel_submit' => 'Найти Отель'
+    'hotel_submit' => 'Найти Отель',
 
+
+    'find_car_title' => 'Найдите своё авто',
+    'start_date' => 'Дата начала',
+    'start_time' => 'Время начала',
+    'end_date' => 'Дата окончания',
+    'end_time' => 'Время окончания',
+    'adults' => 'Взрослые',
+    'driver' => 'Водитель',
+    'driver_default' => 'С водителем',
+    'car_submit' => 'Найти авто',
+
+    'available_submit' => 'Проверить наличие',
 ];

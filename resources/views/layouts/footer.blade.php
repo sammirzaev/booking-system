@@ -18,7 +18,7 @@
                 <p>
                 <ul class="colorlib-footer-links">
                     <li><a href="{{ route('hotel.index') }}">{{ __('layouts/footer.hotel') }}</a></li>
-                    <li><a href="#">{{ __('layouts/footer.cars') }}</a></li>
+                    <li><a href="{{ route('car.index') }}">{{ __('layouts/footer.cars') }}</a></li>
                     <li><a href="#">{{ __('layouts/footer.tours') }}</a></li>
                     <li><a href="#">{{ __('layouts/footer.activities') }}</a></li>
                 </ul>

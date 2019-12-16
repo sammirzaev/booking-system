@@ -46,7 +46,7 @@
                 <input type="text" class="form-control float-right" id="detailCurrentDate" name="detailCurrentDate"
                        placeholder="{{ (isset($room) && $room->availabilities->first() && $room->availabilities->last()) ?
                        $room->availabilities->first()->current_date . " - " .$room->availabilities->last()->current_date :
-                       old('detailCurrentDate') }}">
+                       old('detailCurrentDate') }}" autocomplete="off">
 
                 <input type="hidden" name="detailCurrentDateStart"  value="{{ (isset($room) && $room->availabilities->first()) ?
                        $room->availabilities->first()->current_date :

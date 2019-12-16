@@ -25,3 +25,4 @@
     @include('index.popular_side')
 
 @endsection
+

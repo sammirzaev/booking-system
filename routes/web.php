@@ -35,13 +35,24 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
     Auth::routes();
 
     Route::get('/', 'IndexController@index')->name('index');
+
+    /**
+     * Hotel
+     */
     Route::resource('/hotel', 'HotelController')->names('hotel');
-
     Route::resource('/hotel-check-out', 'HotelCheckoutController')->names('hotel.checkout');
+    Route::resource('/room-search', 'RoomSearchController')
+        ->only('index')->names('room.search');
+    Route::resource('/booking', 'BookingController')
+        ->only('index')->names('booking');
 
-    Route::resource('/room-search', 'RoomSearchController')->only('index')->names('room.search');
-
-    Route::resource('/booking', 'BookingController')->only('index')->names('booking');
+    /**
+     * Car
+     */
+    Route::resource('/cars', 'CarController')
+        ->only('index', 'show')->names('car');
+    Route::resource('/car-search', 'CarSearchController')
+        ->only('index')->names('car.search');
 
     /**
      * User routes

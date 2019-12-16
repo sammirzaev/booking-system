@@ -44,7 +44,7 @@
                         </li>
                         <li class="{{ request()->routeIs('index') ? 'active' : '' }}"><a href="{{ route('index') }}">{{ __('layouts/navigation.home') }}</a></li>
                         <li class="{{ request()->routeIs('hotel.index') ? 'active' : '' }}"><a href="{{ route('hotel.index') }}">{{ __('layouts/navigation.hotel') }}</a></li>
-                        <li><a href="#">{{ __('layouts/navigation.cars') }}</a></li>
+                        <li class="{{ request()->routeIs('car.index') ? 'active' : '' }}"><a href="{{ route('car.index') }}">{{ __('layouts/navigation.cars') }}</a></li>
                         <li><a href="#">{{ __('layouts/navigation.tours') }}</a></li>
                         <li><a href="#">{{ __('layouts/navigation.activities') }}</a></li>
                         <li><a href="#">{{ __('layouts/navigation.flight') }}</a></li>

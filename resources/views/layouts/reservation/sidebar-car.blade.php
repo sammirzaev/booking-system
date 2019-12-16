@@ -1,10 +1,12 @@
-<div id="car" class="tab-pane fade">
-    <form method="post" class="colorlib-form">
+<div class="side search-wrap animate-box">
+    <h3 class="sidebar-heading">{{ __('layouts/reservation/widget.find_car_title') }}</h3>
+    <form action="{{ route('hotel.index') }}" method="post" class="colorlib-form">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <div class="form-group">
-                    <label for="where"> {{ __('layouts/reservation/widget.where_label') }}:</label>
+                    <label for="where">{{ __('layouts/reservation/widget.where_label') }}:</label>
                     <div class="form-field">
+                        <i class="icon icon-map-marker"></i>
                         <select class="form-control" name="where" id="where">
                             <option value="" class="option-grey">{{ __('layouts/reservation/widget.where_default') }}</option>
                             @if(isset($locations) && $locations->isNotEmpty())
@@ -14,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label for="start_date">{{ __('layouts/reservation/widget.start_date') }}:</label>
                     <div class="form-field">
@@ -22,6 +24,8 @@
                         <input type="text" name="start_date" id="start_date" class="form-control date" placeholder="{{ __('layouts/reservation/widget.start_date') }}" required autocomplete="off">
                     </div>
                 </div>
+            </div>
+            <div class="col-md-12">
                 <div class="form-group">
                     <label for="start_time">{{ __('layouts/reservation/widget.start_time') }}:</label>
                     <div class="form-field">
@@ -34,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label for="end_date">{{ __('layouts/reservation/widget.end_date') }}:</label>
                     <div class="form-field">
@@ -42,6 +46,8 @@
                         <input type="text" name="end_date" id="end_date" class="form-control date" placeholder="{{ __('layouts/reservation/widget.end_date') }}" required autocomplete="off">
                     </div>
                 </div>
+            </div>
+            <div class="col-md-12">
                 <div class="form-group">
                     <label for="end_time">{{ __('layouts/reservation/widget.end_time') }}:</label>
                     <div class="form-field">
@@ -54,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label for="adults">{{ __('layouts/reservation/widget.adults') }}</label>
                     <div class="form-field">
@@ -78,7 +84,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <input type="submit" name="submit" id="submit" value="{{ __('layouts/reservation/widget.car_submit') }}" class="btn btn-primary btn-block">
             </div>
         </div>

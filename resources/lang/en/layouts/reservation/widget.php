@@ -28,6 +28,20 @@ return [
 
     'guest_label' => 'Guest',
 
-    'hotel_submit' => 'Find Hotel'
+    'hotel_submit' => 'Find Hotel',
+
+
+    'find_car_title' => 'Find your car',
+    'start_date' => 'Start Date',
+    'start_time' => 'Start Time',
+    'end_date' => 'End Date',
+    'end_time' => 'End Time',
+    'adults' => 'Adults',
+    'driver' => 'Driver',
+    'driver_default' => 'With driver',
+    'car_submit' => 'Find Car',
+
+    'available_submit' => 'Check Available',
+
 
 ];
