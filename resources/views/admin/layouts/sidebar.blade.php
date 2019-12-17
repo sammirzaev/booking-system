@@ -18,13 +18,13 @@
             <li class="nav-header">DASHBOARD</li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.order.index') }}" class="nav-link">
+                <a href="{{ route('admin.order.index') }}" class="nav-link {{ request()->routeIs('admin.order.index') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-chart-pie"></i>
                     <p>Orders</p>
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('admin.user.index') }}" class="nav-link">
+                <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-user"></i>
                     <p>Users</p>
                 </a>
@@ -49,31 +49,31 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('admin.hotel.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.hotel.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin.hotel.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-list"></i>
                                     <p>Objects List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.hotel.facility.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.hotel.facility.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin..hotel.facility.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-sliders-h"></i>
                                     <p>Facilities List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.hotel.type.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.hotel.type.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin.hotel.type.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-text-height"></i>
                                     <p>Type List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.hotel.surround.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.hotel.surround.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin.hotel.surround.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-store-alt"></i>
                                     <p>Surround List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.hotel.bonus.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.hotel.bonus.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin.hotel.bonus.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-archive"></i>
                                     <p>Bonus List</p>
                                 </a>
@@ -90,25 +90,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('admin.room.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.room.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin.room.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-list"></i>
                                     <p>Rooms List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.room.facility.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.room.facility.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin.room.facility.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-sliders-h"></i>
                                     <p>Facilities List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.room.type.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.room.type.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin.room.type.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-text-height"></i>
                                     <p>Type List</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('admin.room.bonus.index') }}" class="nav-link ml-4">
+                                <a href="{{ route('admin.room.bonus.index') }}" class="nav-link ml-4 {{ request()->routeIs('admin.room.bonus.index') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-archive"></i>
                                     <p>Bonus List</p>
                                 </a>
@@ -116,12 +116,18 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.location.index') }}" class="nav-link ml-2">
+                        <a href="{{ route('admin.location.index') }}" class="nav-link ml-2 {{ request()->routeIs('admin.location.index') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-globe-asia"></i>
                             <p>Location</p>
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li class="nav-item">
+                <a href="{{ route('admin.car.index') }}" class="nav-link {{ request()->routeIs('admin.car.index') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-car"></i>
+                    <p>Car List</p>
+                </a>
             </li>
 {{--            <li class="nav-item">--}}
 {{--                <a href="{{ route('logout') }}" class="nav-link"--}}

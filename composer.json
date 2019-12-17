@@ -14,7 +14,8 @@
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
         "prologue/alerts": "^0.4.5",
-        "symfony/polyfill-iconv": "^1.12"
+        "symfony/polyfill-iconv": "^1.12",
+        "ext-json": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

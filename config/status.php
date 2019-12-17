@@ -2,6 +2,7 @@
 return [
     'hotel' => ['active', 'blocked'],
     'room' => ['free', 'blocked', 'booked'],
+    'car' => ['active', 'blocked'],
 
     'order' => [
         'room'  => [

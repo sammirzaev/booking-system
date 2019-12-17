@@ -9,7 +9,7 @@ use Kyslik\ColumnSortable\Sortable;
  * App\Car
  *
  * @property int $id
- * @property string $name
+ * @property string $title
  * @property int $type
  * @property float $price
  * @property int|null $status
@@ -20,6 +20,7 @@ use Kyslik\ColumnSortable\Sortable;
  * @property int $doors
  * @property int $condition
  * @property string $img
+ * @property int $location_id
  * @property string|null $latitude
  * @property string|null $longitude
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\CarAvailability[] $availabilities
@@ -73,6 +74,14 @@ class Car extends Model
      */
     public $timestamps = false;
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'condition' => 'boolean',
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -80,6 +89,14 @@ class Car extends Model
     public function availabilities()
     {
         return $this->hasMany(CarAvailability::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
     }
 
     /**
@@ -91,5 +108,27 @@ class Car extends Model
     public function scopeActive($query)
     {
         return $query->where('status',  self::STATUS_ACTIVE);
+    }
+
+    /**
+     * Set the car img.
+     *
+     * @param $value
+     * @return void
+     */
+    public function setImgAttribute($value)
+    {
+        $this->attributes['img'] = json_encode($value);
+    }
+
+    /**
+     * Get the car img.
+     *
+     * @param $value
+     * @return mixed
+     */
+    public function getImgAttribute($value)
+    {
+        return json_decode($value);
     }
 }

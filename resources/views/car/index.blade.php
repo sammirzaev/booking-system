@@ -17,9 +17,9 @@
                                     <div class="hotel-entry">
                                         <a href="#" class="hotel-img"
                                            style="background-image: url({{
-                                           isset($car->img) && isset($car->img) &&
-                                           Storage::disk('public')->exists('cars/' . $car->img)
-                                           ? asset("storage/cars/" . $car->img)
+                                           isset($car->img) && current($car->img) &&
+                                           Storage::disk('public')->exists('cars/' . current($car->img))
+                                           ? asset("storage/cars/" . current($car->img))
                                            : asset('img/default/car.jpg')  }});"
                                         >
                                             <p class="price"><span>${{ number_format($car->price * $car->adult_min) }}</span></p>

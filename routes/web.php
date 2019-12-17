@@ -83,6 +83,11 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
         Route::resource('/room-bonus', 'RoomBonusController')->names('room.bonus');
         Route::resource('/room-facility', 'RoomFacilityController')->names('room.facility');
 
+        /**
+         * Car routes
+         */
+        Route::resource('/car', 'CarController')->names('car');
+
         Route::resource('/user', 'UserController')->names('user');
     });
 
