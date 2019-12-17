@@ -8,7 +8,7 @@ use App\Http\Traits\User;
 use Illuminate\Http\Request;
 use App\Http\Traits\CarCheck;
 
-class CarCheckoutController extends Controller
+class CarCheckoutController extends FrontendController
 {
     const STATUS_ORDER_CAR_PENDING = 1;
     const STATUS_ORDER_CAR_CANCEL = 3;
@@ -16,6 +16,11 @@ class CarCheckoutController extends Controller
     const STATUS_CAR_AVIABILITY_BOOKED = 2;
 
     use CarCheck, User;
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('destroy');
+    }
 
     /**
      * Display a listing of the resource.
