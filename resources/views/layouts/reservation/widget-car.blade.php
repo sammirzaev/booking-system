@@ -1,5 +1,5 @@
 <div id="car" class="tab-pane fade">
-    <form method="post" class="colorlib-form">
+    <form action="{{ route('car.search') }}" method="get" class="colorlib-form">
         <div class="row">
             <div class="col-md-3">
                 <div class="form-group">

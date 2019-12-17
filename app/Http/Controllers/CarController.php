@@ -29,6 +29,18 @@ class CarController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function search()
+    {
+        $cars = $this->car::active()->paginate(config('paginate.user.cars'));
+
+        return view('car.index')
+            ->with('cars', $cars)
+            ->with('locations', $this->location->all()->load('language'));
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -39,18 +51,6 @@ class CarController extends Controller
 
         return view('car.index')
             ->with('cars', $cars)
-            ->with('locations', $this->location->all()->load('language'));
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function search()
-    {
-        return view('car.show')
-            ->with('cars', $this->car::active())
             ->with('locations', $this->location->all()->load('language'));
     }
 }

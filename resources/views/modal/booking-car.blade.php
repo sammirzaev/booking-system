@@ -3,7 +3,7 @@
     <div class="modal">
         <div class="content">
             <form action="{{ route('car.search.index') }}" method="post" class="colorlib-form" id="car_search">
-                <input type="hidden" name="car_id" id="car_id">
+                <input type="hidden" name="car" id="car">
                 <div class="row">
                     <div class="col-md-2">
                         <div class="booknow">
@@ -85,7 +85,7 @@
                 <div class="col-lg-2">
                     <a class="btn btn-primary btn-block" id="model-checkout" href="#">
                         <span class="black">
-                            {{ __('layouts/reservation/widget.book_now_h2') }}Checkout
+                            {{ __('layouts/reservation/widget.book_now_h2') }}
                         </span>
                     </a>
                 </div>

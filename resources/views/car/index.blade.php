@@ -150,7 +150,7 @@
 @push('js')
     <script type="text/javascript">
       $(function() {
-        var car_id;
+        var car;
         var data;
         $('#car_search').submit(function(e){
           data = $(this).serialize();
@@ -168,7 +168,7 @@
             if(res.status){
               $("#modal-status").attr('class', 'show');
               $("#modal-error").attr('class', 'hide');
-              $("#model-checkout").attr('href', '{{ route('hotel.checkout.index') }}?' + data);
+              $("#model-checkout").attr('href', '{{ route('car.checkout.index') }}?' + data);
             }
             else if(res.error){
               $("#modal-status").attr('class', 'hide');
@@ -187,8 +187,8 @@
           modal = $('.cover, .modal, .content');
         btn.on('click', function() {
           modal.fadeIn();
-          car_id = $(this).attr("data-id");
-          $('#car_id').val(car_id);
+          car = $(this).attr("data-id");
+          $('#car').val(car);
         });
         // close modal
         $('.modal').click(function() {
@@ -198,8 +198,8 @@
               return;
             $("#modal-error").attr('class', 'hide');
             $("#modal-status").attr('class', 'hide');
-            car_id = '';
-            $('#car_id').val(car_id);
+            car = '';
+            $('#car').val(car);
             data = '';
             modal.fadeOut();
             wrap.unbind('click');

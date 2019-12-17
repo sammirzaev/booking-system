@@ -1,6 +1,6 @@
 <div class="side search-wrap animate-box">
     <h3 class="sidebar-heading">{{ __('layouts/reservation/widget.find_car_title') }}</h3>
-    <form action="{{ route('hotel.index') }}" method="post" class="colorlib-form">
+    <form action="{{ route('car.search') }}" method="get" class="colorlib-form">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">

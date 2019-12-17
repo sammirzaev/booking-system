@@ -49,10 +49,13 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
     /**
      * Car
      */
+    Route::get('/cars-search', 'CarController@index')->name('car.search');
     Route::resource('/cars', 'CarController')
         ->only('index', 'show')->names('car');
     Route::resource('/car-search', 'CarSearchController')
         ->only('index')->names('car.search');
+    Route::resource('/car-check-out', 'CarCheckoutController')
+        ->only('index', 'store', 'destroy')->names('car.checkout');
 
     /**
      * User routes
@@ -60,6 +63,7 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
     Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
         Route::get('/dashboard', 'DashboardController@index')->name('index');
         Route::resource('/order', 'OrderController')->names('order');
+        Route::resource('/order-car', 'OrderCarController')->names('order.car');
     });
 
     /**

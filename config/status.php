@@ -2,7 +2,9 @@
 return [
     'hotel' => ['active', 'blocked'],
     'room' => ['free', 'blocked', 'booked'],
+
     'car' => ['active', 'blocked'],
+    'car_aviability' => ['free', 'blocked', 'booked'],
 
     'order' => [
         'room'  => [
@@ -27,6 +29,27 @@ return [
                 'code' => 4,
             ]
         ],
-        'car'   => [],
+        'car'   => [
+            0 => [
+                'title' => 'Error',
+                'code' => '',
+            ],
+            1 => [
+                'title' => 'Pending',
+                'code' => 1,
+            ],
+            2 => [
+                'title' => 'Confirmed',
+                'code' => 2,
+            ],
+            3 => [
+                'title' => 'Cancel',
+                'code' => 3,
+            ],
+            4 => [
+                'title' => 'Reject',
+                'code' => 4,
+            ]
+        ],
     ]
 ];
