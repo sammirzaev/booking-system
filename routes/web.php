@@ -63,7 +63,8 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
     Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
         Route::get('/dashboard', 'DashboardController@index')->name('index');
         Route::resource('/order', 'OrderController')->names('order');
-        Route::resource('/order-car', 'OrderCarController')->names('order.car');
+        Route::resource('/order-car', 'OrderCarController')
+            ->only('index')->names('order.car');
     });
 
     /**
@@ -71,7 +72,12 @@ Route::prefix(App\Http\Middleware\Locale::getLocale())->group(function () {
      */
     Route::middleware(['auth', 'auth.admin'])->prefix('backend')->namespace('Admin')->name('admin.')->group(function () {
         Route::get('/', 'IndexController@index')->name('index');
+        /**
+         * Orders
+         */
         Route::resource('/order', 'OrderController')->names('order');
+        Route::resource('/order-car', 'OrderCarController')
+            ->only('index', 'edit', 'update')->names('order.car');
 
         Route::resource('/location', 'LocationController')->names('location');
         Route::resource('/media', 'MediaController')->names('media');

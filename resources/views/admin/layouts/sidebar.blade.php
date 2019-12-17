@@ -18,7 +18,7 @@
             <li class="nav-header">DASHBOARD</li>
 
             <li class="nav-item">
-                <a href="{{ route('admin.order.index') }}" class="nav-link {{ request()->routeIs('admin.order.index') ? 'active' : '' }}">
+                <a href="{{ route('admin.order.car.index') }}" class="nav-link {{ request()->routeIs('admin.order.car.index') ? 'active' : '' }}">
                     <i class="nav-icon fas fa-chart-pie"></i>
                     <p>Orders</p>
                 </a>

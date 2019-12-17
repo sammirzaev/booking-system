@@ -13,38 +13,38 @@
                     @include('layouts.sidebar')
 
                     <div class="col-three-forth animate-box">
-                        <h2>Orders</h2>
+                        <h2>{{ __('order-car/index.car_orders') }}</h2>
                         <div class="row">
                             <div class="col-md-12 table-responsive">
                                 <table id="example2" class="table table-bordered table-hover dataTable " role="grid" aria-describedby="example2_info">
                                     <thead>
                                     <tr role="row">
                                         <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">ID
+                                            aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">#
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="Browser: activate to sort column ascending">Type
+                                            aria-label="Browser: activate to sort column ascending">{{ __('order-car/index.type') }}
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="Engine version: activate to sort column ascending">Title
+                                            aria-label="Engine version: activate to sort column ascending">{{ __('order-car/index.title') }}
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="Engine version: activate to sort column ascending">Price / Payment Type
+                                            aria-label="Engine version: activate to sort column ascending">{{ __('order-car/index.price') }}/{{ __('order-car/index.paid') }}
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="CSS grade: activate to sort column ascending">Date Start
+                                            aria-label="CSS grade: activate to sort column ascending">{{ __('order-car/index.date_start') }}
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="CSS grade: activate to sort column ascending">Date End
+                                            aria-label="CSS grade: activate to sort column ascending">{{ __('order-car/index.date_end') }}
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="CSS grade: activate to sort column ascending">Created Time
+                                            aria-label="CSS grade: activate to sort column ascending">{{ __('order-car/index.created') }}
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="CSS grade: activate to sort column ascending">Status
+                                            aria-label="CSS grade: activate to sort column ascending">{{ __('order-car/index.status') }}
                                         </th>
                                         <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"
-                                            aria-label="CSS grade: activate to sort column ascending">Action
+                                            aria-label="CSS grade: activate to sort column ascending">{{ __('order-car/index.action') }}
                                         </th>
                                     </tr>
                                     </thead>
@@ -53,32 +53,25 @@
                                         @foreach($orders as $order)
                                             <tr role="row" class="odd">
                                                 <td>{{ $order->id }}</td>
-                                                <td>{{ config("settings.objects.$order->order_type.title") }}</td>
+                                                <td>{{config("settings.car_types.{$order->car->type}.title") }}</td>
+                                                <td>{{ $order->car->title }}</td>
                                                 <td>
-                                                    {{ $hotels->where('id', $order->object)->first()->language->title
-                                                    ? $hotels->where('id', $order->object)->first()->language->title : '' }}
+                                                    {{ __('order-car/index.price') }}: ${{ $order->price * $order->adults }}
                                                     <br>
-                                                    {{ $rooms->where('id', $order->type)->first()->type->first()->language->title
-                                                    ? $rooms->where('id', $order->type)->first()->type->first()->language->title : '' }}
+                                                    {{ __('order-car/index.paid') }}: ${{ $order->paid ? $order->paid : 0 }}
                                                 </td>
-                                                <td>
-                                                    Price: ${{ $order->price * $order->adults }}
-                                                    <br>
-                                                    Paid: ${{ $order->paid ? $order->paid : 0 }}
-                                                </td>
-                                                <td>{{ $order->date_start }}</td>
-                                                <td>{{ $order->date_end }}</td>
-                                                <td>{{ $order->created_at }}</td>
-                                                {{-- Create Order get status static                      --}}
-                                                <td>{{ config("status.order.room.$order->status.title") }}</td>
+                                                <td>{{ substr($order->date_start, 0, -3) }}</td>
+                                                <td>{{ substr($order->date_end, 0, -3) }}</td>
+                                                <td>{{ substr($order->created_at, 0, -3)}}</td>
+                                                <td>{{ config("status.order.car.$order->status.title") }}</td>
                                                 <td>
                                                     @if($order->status === 1 || $order->status === 2)
                                                         <div class="btn-group btn-group-sm">
                                                             <a class="btn btn-danger mr-2" href="{{ route('car.checkout.destroy', ['id' => $order->id]) }}" title="Cancel"
                                                                onclick="event.preventDefault()
-                                                                       ;if(confirm('Canceled data cannot be returned?')){document.getElementById('order-cancel{{$order->id}}').submit();}"
+                                                                       ;if(confirm('{{ __('order-car/index.confirm') }}')){document.getElementById('order-cancel{{$order->id}}').submit();}"
                                                             ><i class="fa fa-trash"></i></a>
-                                                            <form id="order-cancel{{$order->id}}" action="{{ route('user.order.destroy', $order) }}" method="POST"
+                                                            <form id="order-cancel{{$order->id}}" action="{{ route('car.checkout.destroy', $order) }}" method="POST"
                                                                   style="display: none;">
                                                                 @csrf
                                                                 @method('delete')
@@ -91,20 +84,20 @@
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <th rowspan="1" colspan="1">ID</th>
-                                        <th rowspan="1" colspan="1">Type</th>
-                                        <th rowspan="1" colspan="1">Title</th>
-                                        <th rowspan="1" colspan="1">Price / Payment Type</th>
-                                        <th rowspan="1" colspan="1">Date Start</th>
-                                        <th rowspan="1" colspan="1">Date End</th>
-                                        <th rowspan="1" colspan="1">Created Time</th>
-                                        <th rowspan="1" colspan="1">Status</th>
-                                        <th rowspan="1" colspan="1">Action</th>
+                                        <th rowspan="1" colspan="1">#</th>
+                                        <th rowspan="1" colspan="1">{{ __('order-car/index.type') }}</th>
+                                        <th rowspan="1" colspan="1">{{ __('order-car/index.title') }}</th>
+                                        <th rowspan="1" colspan="1">{{ __('order-car/index.price') }}/{{ __('order-car/index.paid') }}</th>
+                                        <th rowspan="1" colspan="1">{{ __('order-car/index.date_start') }}</th>
+                                        <th rowspan="1" colspan="1">{{ __('order-car/index.date_end') }}</th>
+                                        <th rowspan="1" colspan="1">{{ __('order-car/index.created') }}</th>
+                                        <th rowspan="1" colspan="1">{{ __('order-car/index.status') }}</th>
+                                        <th rowspan="1" colspan="1">{{ __('order-car/index.action') }}</th>
                                     </tr>
                                     </tfoot>
                                     @else
                                         <tr>
-                                            <th rowspan="1" colspan="9">Order list is empty</th>
+                                            <th rowspan="1" colspan="9">{{ __('order-car/index.no_orders') }}</th>
                                         </tr>
                                         </tfoot>
 
@@ -145,50 +138,5 @@
         </div>
     </div>
 
-    <div id="colorlib-testimony" class="colorlib-light-grey">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                    <h2>Our Satisfied Guests says</h2>
-                    <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 animate-box">
-                    <div class="owl-carousel2">
-                        <div class="item">
-                            <div class="testimony text-center">
-                                <span class="img-user" style="background-image: url({{ asset('img/person1.jpg') }});"></span>
-                                <span class="user">Alysha Myers</span>
-                                <small>Miami Florida, USA</small>
-                                <blockquote>
-                                    <p>" A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony text-center">
-                                <span class="img-user" style="background-image: url({{ asset('img/person2.jpg') }});"></span>
-                                <span class="user">James Fisher</span>
-                                <small>New York, USA</small>
-                                <blockquote>
-                                    <p>One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony text-center">
-                                <span class="img-user" style="background-image: url({{ asset('img/person3.jpg') }});"></span>
-                                <span class="user">Jacob Webb</span>
-                                <small>Athens, Greece</small>
-                                <blockquote>
-                                    <p>Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('index.comment')
 @endsection

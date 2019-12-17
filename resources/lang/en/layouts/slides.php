@@ -13,10 +13,10 @@ return [
     'second_title_h1' => '10 Days Trips',
     'second_title_h2' => 'From Uzbekistan to Karakalpakistan',
 
-    'third_title_h1' => 'Explore our most tavel agency',
+    'third_title_h1' => 'Explore our most travel agency',
     'third_title_h2' => 'Our Hotels',
 
-    'fourth_title_h1' => 'Experience the',
+    'fourth_title_h1' => 'Experience',
     'fourth_title_h2' => 'Best Trip Ever',
 
 ];

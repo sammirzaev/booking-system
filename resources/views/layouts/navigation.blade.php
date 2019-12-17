@@ -67,7 +67,7 @@
                                 </a>
                                 <ul class="dropdown">
 {{--                                    <li><a href="#"><i class="fa fa-heart"></i> {{ __('layouts/navigation.wishlist') }} </a></li>--}}
-                                    <li><a href="{{ route('user.order.index') }}"><i class="fa fa-wpexplorer"></i> {{ __('layouts/navigation.orders') }} </a></li>
+                                    <li><a href="{{ route('user.order.car.index') }}"><i class="fa fa-wpexplorer"></i> {{ __('layouts/navigation.orders') }} </a></li>
 {{--                                    <li><a href="#"><i class="fa fa-bell"></i> {{ __('layouts/navigation.notification') }} </a></li>--}}
 {{--                                    <li><a href="#"><i class="fa fa-cog"></i> {{ __('layouts/navigation.ettings') }} </a></li>--}}
                                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
