@@ -19,7 +19,7 @@
     <meta property="og:url" content="http://sayyah.uz/"/>
     <meta property="og:site_name" content="SaYYah.UZ travellers club"/>
     <meta property="og:description" content="Network of trusted hotels, transports and travel service partners in Uzbekistan"/>
-    <meta name="twitter:title" content="Licensed travel agencyZ" />
+    <meta name="twitter:title" content="Licensed travel agency" />
     <meta name="twitter:image" content="{{ asset('img/default/og.png') }}" />
     <meta name="twitter:url" content="http://sayyah.uz/" />
     <meta name="twitter:card" content="http://sayyah.uz/" />
