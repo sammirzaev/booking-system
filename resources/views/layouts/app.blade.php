@@ -16,12 +16,12 @@
     <!-- Facebook and Twitter integration -->
 {{--    <meta property="og:title" content="SAYYAH.UZ"/>--}}
     <meta property="og:image" content="{{ asset('img/default/og.png') }}"/>
-    <meta property="og:url" content="http://sayyah.uz/"/>
+{{--    <meta property="og:url" content="http://sayyah.uz/"/>--}}
     <meta property="og:site_name" content="SaYYah.UZ travellers club"/>
     <meta property="og:description" content="Network of trusted hotels, transports and travel service partners in Uzbekistan"/>
 {{--    <meta name="twitter:title" content="SAYYAH.UZ" />--}}
     <meta name="twitter:image" content="{{ asset('img/default/og.png') }}" />
-    <meta name="twitter:url" content="http://sayyah.uz/" />
+{{--    <meta name="twitter:url" content="http://sayyah.uz/" />--}}
     <meta name="twitter:card" content="http://sayyah.uz/" />
 
     <link rel="icon" type="image/ico" href="{{ asset('img/default/favicon.ico') }}" />
