@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="description" content="Network of trusted hotels, transports and travel service partners in Uzbekistan" />
+    <meta name="description" content="Licensed travel agency in Uzbekistan, with the safest services and most convenient locations in the highest priority market" />
     <meta name="keywords" content="Hotel, travels" />
     <meta name="author" content="sayyau.uz" />
 
@@ -18,7 +18,7 @@
     <meta property="og:image" content="{{ asset('img/default/og.png') }}"/>
     <meta property="og:url" content="http://sayyah.uz/"/>
     <meta property="og:site_name" content="sayyah.uz"/>
-    <meta property="og:description" content="Network of trusted hotels, transports and travel service partners in Uzbekistan"/>
+    <meta property="og:description" content="Licensed travel agency in Uzbekistan, with the safest services and most convenient locations in the highest priority market"/>
     <meta name="twitter:title" content="SAYYAH.UZ" />
     <meta name="twitter:image" content="{{ asset('img/default/og.png') }}" />
     <meta name="twitter:url" content="http://sayyah.uz/" />
