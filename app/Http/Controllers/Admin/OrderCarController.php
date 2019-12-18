@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Car;
 use App\OrderCar;
 use Illuminate\Http\Request;
+use App\Events\OrderCarChangeEvent;
 
 class OrderCarController extends AdminController
 {
@@ -89,9 +90,16 @@ class OrderCarController extends AdminController
                     }
                 }
             }
-            //            event(new OrderChangeEvent($order));
+            try{
+                event(new OrderCarChangeEvent($order));
+            }
+            catch (\Exception $e){
+                return redirect()->route('admin.order.car.index')
+                    ->with('status', 'Car order changed successfully');
+            }
 
-            return redirect()->route('admin.order.car.index')->with('status', 'Car order changed successfully');
+            return redirect()->route('admin.order.car.index')
+                ->with('status', 'Car order changed successfully');
         }
         return redirect()->back()->with('error', 'Car order changed error');
     }

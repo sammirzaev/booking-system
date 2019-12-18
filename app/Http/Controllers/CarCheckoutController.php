@@ -7,6 +7,8 @@ use App\OrderCar;
 use App\Http\Traits\User;
 use Illuminate\Http\Request;
 use App\Http\Traits\CarCheck;
+use App\Events\OrderCarCreateEvent;
+use App\Events\OrderCarChangeEvent;
 
 class CarCheckoutController extends FrontendController
 {
@@ -69,7 +71,13 @@ class CarCheckoutController extends FrontendController
                         ]
                     );
                 }
-//                event(new OrderCreateEvent($order));
+                try{
+                    event(new OrderCarCreateEvent($order));
+                }
+                catch (\Exception $e){
+                    return redirect()->route('user.order.car.index')
+                        ->with('status', 'Car order created successfully');
+                }
                 return redirect()->route('user.order.car.index')
                     ->with('status', 'Car order created successfully');
             }
@@ -96,6 +104,13 @@ class CarCheckoutController extends FrontendController
                         'status'  => self::STATUS_CAR_AVIABILITY_FREE,
                     ]
                 );
+            }
+            try{
+                event(new OrderCarChangeEvent($order));
+            }
+            catch (\Exception $e){
+                return redirect()->route('user.order.car.index')
+                    ->with('status', 'Car order canceled successfully');
             }
             return redirect()->route('user.order.car.index')
                 ->with('status', 'Car order canceled successfully');
