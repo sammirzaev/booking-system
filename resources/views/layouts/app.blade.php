@@ -17,8 +17,8 @@
     <meta property="og:title" content="SAYYAH.UZ"/>
     <meta property="og:image" content="{{ asset('img/default/og.png') }}"/>
     <meta property="og:url" content="http://sayyah.uz/"/>
-    <meta property="og:site_name" content="sayyah.uz"/>
-    <meta property="og:description" content="Licensed travel agency in Uzbekistan, with the safest services and most convenient locations in the highest priority market"/>
+    <meta property="og:site_name" content="SaYYah.UZ travellers club"/>
+    <meta property="og:description" content="Network of trusted hotels, transports and travel service partners in Uzbekistan"/>
     <meta name="twitter:title" content="SAYYAH.UZ" />
     <meta name="twitter:image" content="{{ asset('img/default/og.png') }}" />
     <meta name="twitter:url" content="http://sayyah.uz/" />
