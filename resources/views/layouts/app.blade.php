@@ -9,20 +9,22 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <meta name="author" content="" />
+    <meta name="description" content="Network of trusted hotels, transports and travel service partners in Uzbekistan" />
+    <meta name="keywords" content="Hotel, travels" />
+    <meta name="author" content="sayyau.uz" />
 
     <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
+    <meta property="og:title" content="SAYYAH.UZ"/>
+    <meta property="og:image" content="{{ asset('img/default/logo.png') }}"/>
+    <meta property="og:url" content="http://sayyah.uz/"/>
+    <meta property="og:site_name" content="sayyah.uz"/>
+    <meta property="og:description" content="Network of trusted hotels, transports and travel service partners in Uzbekistan"/>
+    <meta name="twitter:title" content="SAYYAH.UZ" />
+    <meta name="twitter:image" content="{{ asset('img/default/logo.png') }}" />
+    <meta name="twitter:url" content="http://sayyah.uz/" />
+    <meta name="twitter:card" content="http://sayyah.uz/" />
+
+    <link rel="icon" type="image/ico" href="{{ asset('img/default/favicon.ico') }}" />
 
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
