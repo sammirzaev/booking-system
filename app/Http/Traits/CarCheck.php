@@ -38,7 +38,7 @@ trait CarCheck
 
             $carDetail = Car::where('id', $request->input('car'))
                 ->active()
-                ->where('adult_min', '>=', $request->input('adults'))
+                ->where('adult_max', '>=', $request->input('adults'))
                 ->get();
             if($carDetail->first()){
 
