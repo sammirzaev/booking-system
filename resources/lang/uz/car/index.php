@@ -15,8 +15,18 @@ return [
     'condition_title' => 'Konditsioner mavjud',
     'condition_text' => 'A/C',
 
+    'credit_requires' => 'Kredit karta kerak emas',
+    'pay_at_meet' => 'Uchrashuv vaqtida to\'lash',
+    'experience' => '{1}Haydovchilik staji - :year yil|{2,*}Haydovchilik staji - :year yil',
+    'free_cancel' => 'Bepul bekor qilish',
+
     'open_modal' => 'Buyurtma qilish',
     'no_results' => 'Sizning so\'rovingiz uchun hech qanday natija topilmadi.',
+
+    'price_range' => 'Narxlar oralig\'i',
+    'price_from' => 'Narx boshlab',
+    'price_to' => 'Narxi gacha',
+    'car_type_title' => 'Turi',
 
     /*
     |--------------------------------------------------------------------------

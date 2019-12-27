@@ -396,7 +396,7 @@ h1, h2, h3, h4, h5, h6, figure {
   width: 100%;
   display: block;
   float: left;
-  padding: 9em 0;
+  padding: 3em 0;
   clear: both; }
   @media screen and (max-width: 768px) {
     #colorlib-hotel,
@@ -455,7 +455,7 @@ h1, h2, h3, h4, h5, h6, figure {
       padding: 15px 20px !important;
       color: #000; }
     #colorlib-reservation .nav-tabs li.active {
-      color: #fff !important !important;
+      color: #fff !important;
       background: #2C2E3E !important; }
   @media screen and (max-width: 768px) {
     #colorlib-reservation .nav-tabs {
@@ -1015,6 +1015,25 @@ h1, h2, h3, h4, h5, h6, figure {
     color: #b3b3b3; }
     .hotel-entry .desc .star span i {
       color: #FFDD00; }
+
+.hotel-entry .car-img {
+    height: 200px;
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.hotel-entry .car-img .price {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #00BBF0;
+    color: #fff;
+    padding: 8px 12px;
+    margin: 0;
+}
 
 .heading2 {
   margin-bottom: 5em;
@@ -1902,3 +1921,8 @@ input[type="text"] {
     content:" *";
     color:red;
 }
+.open-modal-btn-blue, .open-modal-btn-blue:hover {
+    background: #2C2E3E !important;
+    border: 1px solid #2C2E3E !important;
+}
+

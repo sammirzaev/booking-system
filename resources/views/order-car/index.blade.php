@@ -53,7 +53,7 @@
                                         @foreach($orders as $order)
                                             <tr role="row" class="odd">
                                                 <td>{{ $order->id }}</td>
-                                                <td>{{config("settings.car_types.{$order->car->type}.title") }}</td>
+                                                <td>{{ __('config/settings.car_type_' . $order->car->type) }}</td>
                                                 <td>{{ $order->car->title }}</td>
                                                 <td>
                                                     {{ __('order-car/index.price') }}: ${{ $order->price * $order->adults }}
@@ -63,7 +63,7 @@
                                                 <td>{{ substr($order->date_start, 0, -3) }}</td>
                                                 <td>{{ substr($order->date_end, 0, -3) }}</td>
                                                 <td>{{ substr($order->created_at, 0, -3)}}</td>
-                                                <td>{{ config("status.order.car.$order->status.title") }}</td>
+                                                <td>{{ __('config/status.order_car_' . $order->status) }}</td>
                                                 <td>
                                                     @if($order->status === 1 || $order->status === 2)
                                                         <div class="btn-group btn-group-sm">

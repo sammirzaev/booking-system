@@ -18,13 +18,15 @@ use Kyslik\ColumnSortable\Sortable;
  * @property int $adult_max
  * @property int $bags
  * @property int $doors
- * @property int $condition
- * @property string $img
- * @property int $location_id
+ * @property bool $condition
+ * @property mixed $img
  * @property string|null $latitude
  * @property string|null $longitude
+ * @property int $location_id
+ * @property int $driver_experience
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\CarAvailability[] $availabilities
  * @property-read int|null $availabilities_count
+ * @property-read \App\Location $location
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car active()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car newQuery()
@@ -35,21 +37,18 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereBags($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereCondition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereDoors($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereDriverExperience($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereImg($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereLatitude($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereLocationId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereLongitude($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereSort($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereType($value)
  * @mixin \Eloquent
- * @property int $driver_experience
- * @property-read \App\Location $location
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereDriverExperience($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereLocationId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereTitle($value)
  */
 class Car extends Model
 {

@@ -15,15 +15,15 @@ return [
     ],
     'car_types' => [
         1 => [
-            'title' => 'Car',
+            'title' => 'car',
             'code' => 1
         ],
         2 => [
-            'title' => 'Mininus',
+            'title' => 'minibus',
             'code' => 2
         ],
         3 => [
-            'title' => 'Busses',
+            'title' => 'busses',
             'code' => 3
         ],
     ]

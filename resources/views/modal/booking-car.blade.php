@@ -3,7 +3,7 @@
     <div class="modal">
         <div class="content">
             <form action="{{ route('car.search.index') }}" method="post" class="colorlib-form" id="car_search">
-                <input type="hidden" name="car" id="car">
+                <input type="hidden" name="car" id="car_id">
                 <div class="row">
                     <div class="col-md-2">
                         <div class="booknow">

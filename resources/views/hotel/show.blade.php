@@ -38,7 +38,7 @@
                                                                 @endif
                                                             </p>
                                                             <p>{{ Str::limit($room->language->description , 200) }}</p>
-                                                            <p><a href="/{{str_replace('_', '-', app()->getLocale())}}/booking/?room-type={{ $room->room_type }}"><span class="btn btn-primary" data-id="{{ $room->id }}">Book Now!</span></a></p>
+                                                            <p><a href="/{{str_replace('_', '-', app()->getLocale())}}/booking/?room-type={{ $room->room_type }}"><span class="btn btn-primary open-modal-btn-blue" data-id="{{ $room->id }}">Book Now!</span></a></p>
                                                         </div>
                                                     </div>
                                                 </div>

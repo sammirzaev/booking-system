@@ -13,27 +13,39 @@
                         <div class="wrap-division">
                             @if(isset($cars) && $cars->isNotEmpty())
                                 @foreach($cars as $car)
-                                <div class="col-md-6 col-sm-6 animate-box">
-                                    <div class="hotel-entry">
-                                        <a href="#" class="hotel-img"
-                                           style="background-image: url({{
-                                           isset($car->img) && current($car->img) &&
-                                           Storage::disk('public')->exists('cars/' . current($car->img))
-                                           ? asset("storage/cars/" . current($car->img))
-                                           : asset('img/default/car.jpg')  }});"
-                                        >
-                                            <p class="price"><span>${{ number_format($car->price * $car->adult_min) }}</span></p>
-                                        </a>
-                                        <div class="desc">
-                                            <p class="star">
+                                    <div class="col-md-12">
+                                        <div class="col-md-4 col-sm-4 animate-box">
+                                            <div class="hotel-entry">
+                                                <a href="#" class="car-img"
+                                                   style="background-image: url({{
+                                               isset($car->img) && current($car->img) &&
+                                               Storage::disk('public')->exists('cars/' . current($car->img))
+                                               ? asset("storage/cars/" . current($car->img))
+                                               : asset('img/default/car.jpg')  }});"
+                                                >
+                                                    <p class="price"><span>${{ number_format($car->price * $car->adult_min) }}</span></p>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8">
+                                            <h3>{{ $car->title }}</h3>
+                                            <div style="float: right" >
+                                                <span class="btn btn-primary open-modal-btn-blue" data-id="{{ $car->id }}">
+                                                    {{ __('car/index.open_modal') }}!
+                                                </span>
+                                                <br><i class="fa fa-minus-circle"></i>&nbsp {{ __('car/index.free_cancel') }}
+                                            </div>
+                                            <div class="desc">
+                                                <p class="star">
                                                 <span>
                                                     <span title="{{ trans_choice('car/index.adult_min', $car->adult_min, ['adult' => $car->adult_min]) }}">
                                                         <i class="fa fa-user"></i><span class="star-add">{{ $car->adult_min }} / {{ $car->adult_max }}</span>
                                                     </span>
-                                                    <span title="{{ trans_choice('car/index.bags', $car->bags, ['bags' => $car->bags]) }}">
+                                                    <span title="{{ trans_choice('car/index.bags', $car->bags, ['bag' => $car->bags]) }}">
                                                         <i class="fa fa-suitcase"></i><span class="star-add">{{ $car->bags }}</span>
                                                     </span>
-                                                    <span title="{{ trans_choice('car/index.doors', $car->doors, ['doors' => $car->doors]) }}">
+                                                    <span title="{{ trans_choice('car/index.doors', $car->doors, ['door' => $car->doors]) }}">
                                                         <i class="fa fa-window-close-o"></i><span class="star-add">{{ $car->doors }}</span>
                                                     </span>
                                                     @if($car->condition)
@@ -42,14 +54,15 @@
                                                         </span>
                                                     @endif
                                                 </span>
-                                            </p>
-                                            <p>
-                                                <span style="float: right" class="btn btn-primary open-modal-btn" data-id="{{ $car->id }}">{{ __('car/index.open_modal') }}!</span>
-                                                <h3>{{ $car->title }}</h3>
-                                            </p>
+                                                </p>
+
+                                            </div>
+                                            <p><i class="fa fa-credit-card"></i>&nbsp {{ __('car/index.credit_requires') }}</p>
+                                            <p><i class="fa fa-dollar"></i>&nbsp {{ __('car/index.pay_at_meet') }}</p>
+                                            <p><i class="fa fa-id-card-o"></i>&nbsp {{ trans_choice('car/index.experience', $car->driver_experience, ['year' => $car->driver_experience]) }}</p>
                                         </div>
-                                    </div>
                                 </div>
+
                                 @endforeach
                             @else
                                 <div class="col-md-6 col-sm-6 animate-box">
@@ -94,6 +107,8 @@
                 <div class="col-md-3">
                     <div class="sidebar-wrap">
                         @include('layouts.reservation.sidebar-car')
+
+                        @include('car.search-options')
                     </div>
                 </div>
             </div>
@@ -156,6 +171,7 @@
           data = $(this).serialize();
           // console.log(data);
           e.preventDefault();
+          // console.log(data)
           var request = $.ajax({
             type:'GET',
             url:'{{ route('car.search.index') }}',
@@ -183,12 +199,13 @@
         });
         // open modal
         var wrap = $('#wrapper'),
-          btn = $('.open-modal-btn'),
+          btn = $('.open-modal-btn-blue'),
           modal = $('.cover, .modal, .content');
         btn.on('click', function() {
           modal.fadeIn();
           car = $(this).attr("data-id");
-          $('#car').val(car);
+          console.log(car)
+          $('#car_id').val(car);
         });
         // close modal
         $('.modal').click(function() {
@@ -199,7 +216,7 @@
             $("#modal-error").attr('class', 'hide');
             $("#modal-status").attr('class', 'hide');
             car = '';
-            $('#car').val(car);
+            $('#car_id').val(car);
             data = '';
             modal.fadeOut();
             wrap.unbind('click');

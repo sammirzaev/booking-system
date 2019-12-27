@@ -1,11 +1,11 @@
 <div class="row form-group">
     <div class="col-md-6 padding-bottom">
-        <label for="name" class="required">{{ __('auth/register.name') }}</label>
+        <label for="first_name" class="required">{{ __('auth/register.name') }}</label>
 
-        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-               name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+        <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror"
+               name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
-        @error('name')
+        @error('first_name')
         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
