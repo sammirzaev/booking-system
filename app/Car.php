@@ -45,6 +45,11 @@ use Kyslik\ColumnSortable\Sortable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereType($value)
  * @mixin \Eloquent
+ * @property int $driver_experience
+ * @property-read \App\Location $location
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereDriverExperience($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereLocationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Car whereTitle($value)
  */
 class Car extends Model
 {

@@ -81,6 +81,7 @@ class CarController extends AdminController
         $this->car->bags = $request->bags;
         $this->car->doors = $request->doors;
         $this->car->condition = $request->condition;
+        $this->car->driver_experience = $request->driver_experience;
         $this->car->adult_min = $request->adult_min;
         $this->car->adult_max = $request->adult_max;
         $this->car->adult_max = $request->adult_max;
@@ -132,6 +133,7 @@ class CarController extends AdminController
         $car->bags = $request->get('bags', $car->bags);
         $car->doors = $request->get('doors', $car->doors);
         $car->condition = $request->get('condition', $car->condition);
+        $car->driver_experience = $request->get('driver_experience', $car->driver_experience);
         $car->adult_min = $request->get('adult_min', $car->adult_min);
         $car->adult_max = $request->get('adult_max', $car->adult_max);
         $car->price = $request->get('price', $car->price);

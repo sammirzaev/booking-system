@@ -79,6 +79,16 @@
             @enderror
         </div>
     </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="required" for="driver_experience">Driver Experience</label>
+            <input type="number" class="form-control @error("driver_experience") is-invalid @enderror" name="driver_experience" id="driver_experience" min="1"
+                   value="{{ (isset($car) && isset($car->driver_experience)) ? $car->driver_experience : old("driver_experience") }}">
+            @error("driver_experience")
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+        </div>
+    </div>
 </div>
 
 <div class="row mt-3">
